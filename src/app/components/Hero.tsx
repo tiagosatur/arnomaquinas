@@ -7,12 +7,12 @@ export function Hero() {
       id="inicio"
       className="relative w-full mt-[88px] overflow-hidden bg-surface lg:aspect-[21/9] lg:min-h-[560px]"
     >
-      {/* Photo: 4:5 mobile, 16:9 tablet, fills section on lg+ */}
-      <div className="relative aspect-[4/5] sm:aspect-[16/9] lg:absolute lg:inset-0 lg:aspect-auto">
+      {/* Photo: 3:2 landscape mobile (compact), 16:9 tablet, fills section on lg+ */}
+      <div className="relative aspect-[3/2] sm:aspect-[16/9] lg:absolute lg:inset-0 lg:aspect-auto">
         <img
           src={heroImg}
           alt="Sala de reunião executiva com cadeiras premium"
-          className="block w-full h-full object-cover object-center lg:object-right"
+          className="block w-full h-full object-cover object-right lg:object-right"
         />
       </div>
 

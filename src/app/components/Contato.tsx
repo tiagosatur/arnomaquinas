@@ -73,7 +73,7 @@ export function Contato() {
   };
 
   return (
-    <section id="contato" className="bg-anchor section-y">
+    <section id="contato" className="bg-anchor-deep section-y">
       <div className="container-page">
         {/* Header */}
         <div className="text-center mb-14 lg:mb-16">
@@ -159,13 +159,13 @@ export function Contato() {
                   form.interesse === "" ? "text-on-brand-soft" : "text-on-brand"
                 }`}
               >
-                <option value="" className="bg-anchor">Selecione uma categoria</option>
-                <option value="moveis" className="bg-anchor">Móveis de Escritório</option>
-                <option value="cadeiras" className="bg-anchor">Cadeiras e Poltronas</option>
-                <option value="equipamentos" className="bg-anchor">Equipamentos</option>
-                <option value="expediente" className="bg-anchor">Material de Expediente</option>
-                <option value="assistencia" className="bg-anchor">Assistência Técnica</option>
-                <option value="outro" className="bg-anchor">Outro</option>
+                <option value="" className="bg-anchor-deep">Selecione uma categoria</option>
+                <option value="moveis" className="bg-anchor-deep">Móveis de Escritório</option>
+                <option value="cadeiras" className="bg-anchor-deep">Cadeiras e Poltronas</option>
+                <option value="equipamentos" className="bg-anchor-deep">Equipamentos</option>
+                <option value="expediente" className="bg-anchor-deep">Material de Expediente</option>
+                <option value="assistencia" className="bg-anchor-deep">Assistência Técnica</option>
+                <option value="outro" className="bg-anchor-deep">Outro</option>
               </select>
               {errors.interesse && <p className={ERR_CLS}>Selecione uma categoria</p>}
             </div>
