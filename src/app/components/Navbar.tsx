@@ -13,6 +13,13 @@ const WHATSAPP_URL = `https://wa.me/5555984549195?text=${encodeURIComponent(
   "Olá, meu nome é [SEU NOME], vim pelo site, e gostaria de "
 )}`;
 
+const links = [
+  { label: "Sobre Nós", href: "#sobre" },
+  { label: "Produtos", href: "#produtos" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Contato", href: "#contato" },
+];
+
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -23,77 +30,32 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const links = [
-    { label: "Sobre Nós", href: "#sobre" },
-    { label: "Produtos", href: "#produtos" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Contato", href: "#contato" },
-  ];
-
   return (
     <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        backgroundColor: "var(--surface-default)",
-        boxShadow: scrolled ? "var(--shadow-header)" : "none",
-        borderBottom: scrolled ? "none" : "1px solid var(--border-brand-faint)",
-        transition: "box-shadow 0.3s",
-      }}
+      className={`fixed inset-x-0 top-0 z-50 bg-surface transition-shadow duration-300 ${
+        scrolled
+          ? "shadow-[var(--shadow-header)]"
+          : "border-b border-line-brand-faint"
+      }`}
     >
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: "0 auto",
-          padding: "0 48px",
-          height: 88,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 32,
-        }}
-      >
+      <div className="container-page flex h-[88px] items-center justify-between gap-8">
         {/* Logo lockup */}
-        <a href="#" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
-          <div
-            style={{
-              width: 44,
-              height: 44,
-              backgroundColor: "var(--brand-primary)",
-              borderRadius: 8,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-            }}
-          >
-            <span style={{ color: "var(--text-on-brand)", fontSize: 22, fontWeight: 800, fontFamily: "Manrope, sans-serif" }}>A</span>
+        <a href="#" className="flex items-center gap-3 shrink-0 no-underline">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand">
+            <span className="text-on-brand text-[22px] font-extrabold">A</span>
           </div>
-          <p style={{ color: "var(--text-primary)", fontSize: 20, fontWeight: 700, lineHeight: 1, fontFamily: "Manrope, sans-serif", letterSpacing: "0.04em" }}>
+          <p className="text-ink text-xl font-bold leading-none tracking-[0.04em]">
             ARNOMÁQUINAS
           </p>
         </a>
 
         {/* Center nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: 40 }} className="hidden lg:flex">
+        <nav className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              style={{
-                color: "var(--text-primary)",
-                fontSize: 15,
-                fontWeight: 500,
-                textDecoration: "none",
-                fontFamily: "Manrope, sans-serif",
-                opacity: 0.82,
-                transition: "opacity 0.2s, color 0.2s",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.color = "var(--brand-primary)"; }}
-              onMouseLeave={e => { e.currentTarget.style.opacity = "0.82"; e.currentTarget.style.color = "var(--text-primary)"; }}
+              className="text-ink text-[15px] font-medium no-underline opacity-[0.82] transition-[opacity,color] duration-200 hover:opacity-100 hover:text-brand"
             >
               {link.label}
             </a>
@@ -101,10 +63,10 @@ export function Navbar() {
         </nav>
 
         {/* Right: phone + CTA */}
-        <div style={{ display: "flex", alignItems: "center", gap: 24, flexShrink: 0 }} className="hidden lg:flex">
+        <div className="hidden lg:flex items-center gap-6 shrink-0">
           <a
             href="tel:+5555984549195"
-            style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--text-primary)", textDecoration: "none", fontFamily: "Manrope, sans-serif", fontSize: 14, opacity: 0.7 }}
+            className="flex items-center gap-2 text-ink text-sm no-underline opacity-70"
           >
             <Phone size={14} />
             <span>(55) 98454-9195</span>
@@ -113,24 +75,7 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              backgroundColor: "var(--brand-primary)",
-              color: "var(--text-on-brand)",
-              padding: "10px 24px",
-              fontSize: 14,
-              fontWeight: 300,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              borderRadius: 2,
-              transition: "background-color 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary-hover)")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary)")}
+            className="inline-flex items-center gap-2.5 rounded-sm bg-brand px-6 py-2.5 text-sm font-light uppercase tracking-[0.08em] text-on-brand no-underline transition-colors duration-200 hover:bg-brand-hover"
           >
             <WhatsAppIcon size={16} />
             Solicitar Orçamento
@@ -139,9 +84,8 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden"
+          className="lg:hidden bg-transparent border-0 text-ink cursor-pointer p-3"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: "none", border: "none", color: "var(--text-primary)", cursor: "pointer", padding: 8 }}
           aria-label="Menu"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -150,23 +94,14 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div style={{ backgroundColor: "var(--surface-default)", borderTop: "1px solid var(--border-brand-subtle)", padding: "16px 24px 24px" }}>
-          <nav style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+        <div className="bg-surface border-t border-line-brand-soft px-6 pt-4 pb-6">
+          <nav className="flex flex-col gap-0">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                style={{
-                  color: "var(--text-primary)",
-                  fontFamily: "Manrope, sans-serif",
-                  fontSize: 15,
-                  fontWeight: 500,
-                  textDecoration: "none",
-                  padding: "14px 0",
-                  borderBottom: "1px solid var(--border-brand-subtle)",
-                  letterSpacing: "0.04em",
-                }}
+                className="text-ink text-[15px] font-medium no-underline py-[14px] border-b border-line-brand-soft tracking-[0.04em]"
               >
                 {link.label}
               </a>
@@ -176,24 +111,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 10,
-                backgroundColor: "var(--brand-primary)",
-                color: "var(--text-on-brand)",
-                padding: "12px 24px",
-                fontSize: 14,
-                fontWeight: 700,
-                fontFamily: "Manrope, sans-serif",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-                textAlign: "center",
-                marginTop: 16,
-                borderRadius: 2,
-              }}
+              className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-brand px-6 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-brand no-underline text-center mt-4"
             >
               <WhatsAppIcon size={16} />
               Solicitar Orçamento
