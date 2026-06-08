@@ -81,7 +81,7 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-brand px-6 py-2.5 text-sm font-light uppercase tracking-[0.08em] text-on-brand no-underline transition-colors duration-200 hover:bg-brand-hover"
+            className="inline-flex items-center gap-2.5 bg-brand px-7 py-[13px] text-[13px] font-light uppercase tracking-[0.08em] text-on-brand no-underline transition-colors duration-200 hover:bg-brand-hover"
           >
             <WhatsAppIcon size={16} />
             Solicitar Orçamento
@@ -145,7 +145,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center gap-2.5 w-full rounded-sm bg-brand px-6 py-4 text-sm font-bold uppercase tracking-[0.08em] text-on-brand no-underline"
+              className="flex items-center justify-center gap-2.5 w-full bg-brand px-7 py-4 text-sm font-bold uppercase tracking-[0.08em] text-on-brand no-underline"
             >
               <WhatsAppIcon size={16} />
               Solicitar Orçamento
