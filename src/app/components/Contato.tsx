@@ -64,9 +64,9 @@ export function Contato() {
 
   const inputStyle: React.CSSProperties = {
     width: "100%",
-    backgroundColor: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    color: "#F4F1EA",
+    backgroundColor: "var(--tint-on-brand-weak)",
+    border: "1px solid var(--border-on-brand-subtle)",
+    color: "var(--text-on-brand)",
     padding: "12px 16px",
     fontSize: 14,
     fontFamily: "Manrope, sans-serif",
@@ -78,12 +78,12 @@ export function Contato() {
 
   const inputErrorStyle: React.CSSProperties = {
     ...inputStyle,
-    border: "1px solid #B85C38",
+    border: "1px solid var(--color-bordeaux-300)",
   };
 
   const labelStyle: React.CSSProperties = {
     display: "block",
-    color: "#9FA9B7",
+    color: "var(--text-on-brand-secondary)",
     fontSize: 11,
     fontWeight: 600,
     letterSpacing: "0.15em",
@@ -93,15 +93,15 @@ export function Contato() {
   };
 
   return (
-    <section id="contato" style={{ backgroundColor: "#14233B", padding: "96px 0" }}>
+    <section id="contato" style={{ backgroundColor: "var(--surface-anchor)", padding: "96px 0" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 64 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--text-on-brand-secondary)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -111,11 +111,11 @@ export function Contato() {
             >
               Fale com a Arnomáquinas
             </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
           </div>
           <h2
             style={{
-              color: "#F4F1EA",
+              color: "var(--text-on-brand)",
               fontFamily: "Manrope, sans-serif",
               fontSize: 38,
               fontWeight: 300,
@@ -128,7 +128,7 @@ export function Contato() {
           </h2>
           <p
             style={{
-              color: "#9FA9B7",
+              color: "var(--text-on-brand-secondary)",
               fontSize: 16,
               fontFamily: "Manrope, sans-serif",
               marginTop: 12,
@@ -153,7 +153,7 @@ export function Contato() {
                   style={errors.nome ? inputErrorStyle : inputStyle}
                 />
                 {errors.nome && (
-                  <p style={{ color: "#B85C38", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
+                  <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
                     Campo obrigatório
                   </p>
                 )}
@@ -194,7 +194,7 @@ export function Contato() {
                   style={errors.contact ? inputErrorStyle : inputStyle}
                 />
                 {errors.contact && (
-                  <p style={{ color: "#B85C38", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
+                  <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
                     Informe e-mail ou telefone
                   </p>
                 )}
@@ -209,19 +209,19 @@ export function Contato() {
                 onChange={handleChange}
                 style={{
                   ...(errors.interesse ? inputErrorStyle : inputStyle),
-                  color: form.interesse === "" ? "#9FA9B7" : "#F4F1EA",
+                  color: form.interesse === "" ? "var(--text-on-brand-secondary)" : "var(--text-on-brand)",
                 }}
               >
-                <option value="" style={{ background: "#14233B" }}>Selecione uma categoria</option>
-                <option value="moveis" style={{ background: "#14233B" }}>Móveis de Escritório</option>
-                <option value="cadeiras" style={{ background: "#14233B" }}>Cadeiras e Poltronas</option>
-                <option value="equipamentos" style={{ background: "#14233B" }}>Equipamentos</option>
-                <option value="expediente" style={{ background: "#14233B" }}>Material de Expediente</option>
-                <option value="assistencia" style={{ background: "#14233B" }}>Assistência Técnica</option>
-                <option value="outro" style={{ background: "#14233B" }}>Outro</option>
+                <option value="" style={{ background: "var(--surface-anchor)" }}>Selecione uma categoria</option>
+                <option value="moveis" style={{ background: "var(--surface-anchor)" }}>Móveis de Escritório</option>
+                <option value="cadeiras" style={{ background: "var(--surface-anchor)" }}>Cadeiras e Poltronas</option>
+                <option value="equipamentos" style={{ background: "var(--surface-anchor)" }}>Equipamentos</option>
+                <option value="expediente" style={{ background: "var(--surface-anchor)" }}>Material de Expediente</option>
+                <option value="assistencia" style={{ background: "var(--surface-anchor)" }}>Assistência Técnica</option>
+                <option value="outro" style={{ background: "var(--surface-anchor)" }}>Outro</option>
               </select>
               {errors.interesse && (
-                <p style={{ color: "#B85C38", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
+                <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
                   Selecione uma categoria
                 </p>
               )}
@@ -245,8 +245,8 @@ export function Contato() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 10,
-                backgroundColor: "#B85C38",
-                color: "#F4F1EA",
+                backgroundColor: "var(--text-on-brand)",
+                color: "var(--brand-primary)",
                 padding: "14px 36px",
                 fontSize: 14,
                 fontWeight: 700,
@@ -258,8 +258,8 @@ export function Contato() {
                 cursor: "pointer",
                 transition: "background-color 0.2s",
               }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#984828")}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#B85C38")}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--surface-hover)")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--text-on-brand)")}
             >
               <WhatsAppIcon size={16} />
               Enviar pelo WhatsApp
@@ -270,14 +270,14 @@ export function Contato() {
           <div>
             <div
               style={{
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid #1D3252",
+                backgroundColor: "var(--tint-on-brand-weak)",
+                border: "1px solid var(--border-on-brand-subtle)",
                 padding: 32,
               }}
             >
               <h4
                 style={{
-                  color: "#F4F1EA",
+                  color: "var(--text-on-brand)",
                   fontSize: 15,
                   fontWeight: 700,
                   fontFamily: "Manrope, sans-serif",
@@ -295,7 +295,7 @@ export function Contato() {
                 ].map((info) => {
                   const Icon = info.icon;
                   const textStyle: React.CSSProperties = {
-                    color: "rgba(244,241,234,0.8)",
+                    color: "var(--text-on-brand-secondary)",
                     fontSize: 14,
                     fontFamily: "Manrope, sans-serif",
                     lineHeight: 1.6,
@@ -307,7 +307,7 @@ export function Contato() {
                         style={{
                           width: 32,
                           height: 32,
-                          backgroundColor: "rgba(184,92,56,0.12)",
+                          backgroundColor: "var(--tint-on-brand-medium)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -315,12 +315,12 @@ export function Contato() {
                           marginTop: 2,
                         }}
                       >
-                        <Icon size={13} color="#B85C38" />
+                        <Icon size={13} color="var(--text-on-brand)" />
                       </div>
                       <div>
                         <p
                           style={{
-                            color: "#9FA9B7",
+                            color: "var(--text-on-brand-secondary)",
                             fontSize: 11,
                             fontWeight: 600,
                             letterSpacing: "0.12em",
@@ -337,8 +337,8 @@ export function Contato() {
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{ ...textStyle, textDecoration: "underline", textUnderlineOffset: 3 }}
-                            onMouseEnter={e => (e.currentTarget.style.color = "#F4F1EA")}
-                            onMouseLeave={e => (e.currentTarget.style.color = "rgba(244,241,234,0.8)")}
+                            onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
+                            onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
                           >
                             {info.value}
                           </a>

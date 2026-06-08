@@ -48,15 +48,15 @@ const depoimentos = [
 
 export function SocialProof() {
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "96px 0" }}>
+    <section style={{ backgroundColor: "var(--surface-elevated)", padding: "96px 0" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--accent-eyebrow)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -66,11 +66,11 @@ export function SocialProof() {
             >
               O que dizem nossos clientes
             </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
           </div>
           <h2
             style={{
-              color: "#14233B",
+              color: "var(--text-primary)",
               fontFamily: "Manrope, sans-serif",
               fontSize: 38,
               fontWeight: 300,
@@ -93,45 +93,49 @@ export function SocialProof() {
                 style={{
                   position: "relative",
                   padding: isCenter ? 40 : 32,
-                  backgroundColor: isCenter ? "#14233B" : "#F4F1EA",
+                  backgroundColor: isCenter ? "var(--surface-anchor)" : "var(--surface-default)",
                   transform: isCenter ? "scale(1.08)" : "scale(1)",
                   boxShadow: isCenter
-                    ? "0 20px 40px rgba(20,35,59,0.25)"
-                    : "0 8px 20px rgba(0,0,0,0.06)",
+                    ? "0 20px 40px rgba(80, 9, 21, 0.25)"
+                    : "0 8px 20px rgba(0, 0, 0, 0.06)",
                   zIndex: isCenter ? 2 : 1,
                 }}
               >
                 <Quote
                   size={28}
-                  color={isCenter ? "rgba(244,241,234,0.2)" : "rgba(184,92,56,0.15)"}
+                  color={isCenter ? "var(--text-on-brand-tertiary)" : "var(--tint-brand-weak)"}
                   style={{ marginBottom: 20 }}
                 />
                 <div style={{ display: "flex", marginBottom: 16 }}>
                   {Array.from({ length: dep.rating }).map((_, j) => (
-                    <Star key={j} size={13} color="#B85C38" fill="#B85C38" />
+                    <Star
+                      key={j}
+                      size={13}
+                      color={isCenter ? "var(--text-on-brand)" : "var(--brand-primary)"}
+                      fill={isCenter ? "var(--text-on-brand)" : "var(--brand-primary)"}
+                    />
                   ))}
                 </div>
                 <p
                   style={{
-                    color: isCenter ? "#F4F1EA" : "#2A3242",
+                    color: isCenter ? "var(--text-on-brand)" : "var(--text-secondary)",
                     fontSize: 14,
                     lineHeight: 1.8,
                     fontFamily: "Manrope, sans-serif",
                     marginBottom: 28,
-                    opacity: isCenter ? 1 : 0.8,
                   }}
                 >
                   "{dep.texto}"
                 </p>
                 <div
                   style={{
-                    borderTop: `1px solid ${isCenter ? "#1D3252" : "#E8E4DB"}`,
+                    borderTop: `1px solid ${isCenter ? "var(--border-on-brand-subtle)" : "var(--border-subtle)"}`,
                     paddingTop: 20,
                   }}
                 >
                   <p
                     style={{
-                      color: isCenter ? "#F4F1EA" : "#14233B",
+                      color: isCenter ? "var(--text-on-brand)" : "var(--text-primary)",
                       fontSize: 14,
                       fontWeight: 700,
                       fontFamily: "Manrope, sans-serif",
@@ -141,7 +145,7 @@ export function SocialProof() {
                   </p>
                   <p
                     style={{
-                      color: "#B85C38",
+                      color: isCenter ? "var(--text-on-brand-secondary)" : "var(--brand-primary)",
                       fontSize: 12,
                       fontFamily: "Manrope, sans-serif",
                       marginTop: 2,
@@ -151,10 +155,9 @@ export function SocialProof() {
                   </p>
                   <p
                     style={{
-                      color: isCenter ? "#9FA9B7" : "#2A3242",
+                      color: isCenter ? "var(--text-on-brand-tertiary)" : "var(--text-tertiary)",
                       fontSize: 12,
                       fontFamily: "Manrope, sans-serif",
-                      opacity: isCenter ? 1 : 0.55,
                       marginTop: 2,
                     }}
                   >
@@ -170,10 +173,10 @@ export function SocialProof() {
         <div style={{ paddingTop: 80 }}>
           {/* Eyebrow */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 48 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--accent-eyebrow)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -183,7 +186,7 @@ export function SocialProof() {
             >
               Marcas e Parceiros de Confiança
             </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
           </div>
 
           {/* Logo row — no boxes, no borders */}
@@ -212,10 +215,10 @@ export function SocialProof() {
                 onMouseEnter={e => (e.currentTarget.style.opacity = "0.75")}
                 onMouseLeave={e => (e.currentTarget.style.opacity = "0.3")}
               >
-                <Icon size={28} color="#14233B" strokeWidth={1.5} />
+                <Icon size={28} color="var(--text-primary)" strokeWidth={1.5} />
                 <span
                   style={{
-                    color: "#14233B",
+                    color: "var(--text-primary)",
                     fontSize: 10,
                     fontWeight: 700,
                     letterSpacing: "0.14em",

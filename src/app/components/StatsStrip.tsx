@@ -9,7 +9,7 @@ export function StatsStrip() {
   return (
     <section
       style={{
-        backgroundColor: "#F4F1EA",
+        backgroundColor: "var(--surface-default)",
         padding: "64px 48px",
       }}
     >
@@ -35,7 +35,7 @@ export function StatsStrip() {
           >
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--brand-primary)",
                 fontSize: 36,
                 fontWeight: 700,
                 lineHeight: 1,
@@ -47,7 +47,7 @@ export function StatsStrip() {
             </span>
             <span
               style={{
-                color: "#2A3242",
+                color: "var(--text-muted)",
                 fontSize: 12,
                 fontWeight: 500,
                 letterSpacing: "0.12em",

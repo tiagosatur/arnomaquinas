@@ -1,4 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import moveisImg from "../../imports/especialidades/moveis.png";
+import cadeirasImg from "../../imports/especialidades/cadeiras.png";
+import expedienteImg from "../../imports/especialidades/expediente.png";
 
 // Warm-neutral CSS grade applied identically to all photos:
 // saturate(0.82) → -18% saturation; sepia(0.07) → slight warm cast; contrast(1.03) → compensates for lost punch
@@ -11,9 +14,7 @@ const categories = [
     title: "Móveis de Escritório",
     description:
       "Mesas executivas, estações de trabalho, armários, arquivos e divisórias. Soluções para todos os ambientes corporativos, desde recepções até salas de reunião de alto padrão.",
-    // Premium executive office — same family as hero
-    image:
-      "https://images.unsplash.com/photo-1715593949273-09009558300a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBvZmZpY2UlMjBmdXJuaXR1cmUlMjBkZXNrJTIwd29ya3NwYWNlJTIwcHJlbWl1bSUyMGludGVyaW9yfGVufDF8fHx8MTc4MDg2NzM1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: moveisImg,
     tags: ["Executivo", "Reuniões", "Recepção", "Open Space"],
   },
   {
@@ -22,8 +23,7 @@ const categories = [
     title: "Cadeiras e Poltronas",
     description:
       "Linha completa de cadeiras ergonômicas, poltronas executivas e de espera. Conforto e design aliados à produtividade e bem-estar dos colaboradores.",
-    image:
-      "https://images.unsplash.com/photo-1770316320132-e082373dd3f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBjaGFpcnMlMjBlcmdvbm9taWMlMjBjb3Jwb3JhdGV8ZW58MXx8fHwxNzgwNzY1MTM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: cadeirasImg,
     tags: ["Ergonômico", "Executivo", "Espera", "Cavaletti"],
   },
   {
@@ -42,8 +42,7 @@ const categories = [
     title: "Material de Expediente",
     description:
       "Tudo para o dia a dia do escritório: papelaria, organização, arquivo e suprimentos. Um catálogo completo para você não precisar ir a lugar nenhum.",
-    image:
-      "https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxvZmZpY2UlMjBzdXBwbGllcyUyMHN0YXRpb25lcnklMjBjb3Jwb3JhdGV8ZW58MXx8fHwxNzgwNzY1MTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: expedienteImg,
     tags: ["Papelaria", "Arquivo", "Suprimentos", "Organização"],
   },
 ];
@@ -52,16 +51,16 @@ export function Especialidades() {
   const [featured, ...others] = categories;
 
   return (
-    <section id="produtos" style={{ backgroundColor: "#F4F1EA", padding: "96px 0" }}>
+    <section id="produtos" style={{ backgroundColor: "var(--surface-default)", padding: "96px 0" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
 
         {/* Section header */}
         <div style={{ marginBottom: 56 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 10, height: 2, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 10, height: 2, backgroundColor: "var(--accent-eyebrow)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--accent-eyebrow)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -79,7 +78,7 @@ export function Especialidades() {
                 fontSize: 38,
                 fontWeight: 300,
                 lineHeight: 1.2,
-                color: "#14233B",
+                color: "var(--text-primary)",
                 letterSpacing: "-0.02em",
                 margin: 0,
               }}
@@ -89,7 +88,7 @@ export function Especialidades() {
             </h2>
             <p
               style={{
-                color: "#2A3242",
+                color: "var(--text-primary)",
                 fontSize: 15,
                 lineHeight: 1.7,
                 fontFamily: "Manrope, sans-serif",
@@ -104,7 +103,7 @@ export function Especialidades() {
         </div>
 
         {/* Asymmetric grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(3, 200px)", gap: 3 }}>
 
           {/* ── FEATURED CARD: photo top, solid navy panel bottom ── */}
           <div
@@ -131,10 +130,10 @@ export function Especialidades() {
               />
             </div>
 
-            {/* Solid navy text panel */}
+            {/* Solid bordeaux text panel */}
             <div
               style={{
-                backgroundColor: "#14233B",
+                backgroundColor: "var(--surface-anchor)",
                 padding: "32px 36px",
                 flexShrink: 0,
               }}
@@ -143,7 +142,7 @@ export function Especialidades() {
               <span
                 style={{
                   display: "block",
-                  color: "#B85C38",
+                  color: "var(--text-on-brand-secondary)",
                   fontSize: 11,
                   fontWeight: 700,
                   letterSpacing: "0.2em",
@@ -161,9 +160,9 @@ export function Especialidades() {
                   <span
                     key={tag}
                     style={{
-                      color: "#F4F1EA",
+                      color: "var(--text-on-brand)",
                       fontSize: 11,
-                      border: "1px solid rgba(244,241,234,0.3)",
+                      border: "1px solid var(--border-on-brand)",
                       padding: "3px 10px",
                       fontFamily: "Manrope, sans-serif",
                       letterSpacing: "0.06em",
@@ -177,7 +176,7 @@ export function Especialidades() {
               {/* Title */}
               <h3
                 style={{
-                  color: "#F4F1EA",
+                  color: "var(--text-on-brand)",
                   fontSize: 24,
                   fontWeight: 700,
                   fontFamily: "Manrope, sans-serif",
@@ -191,7 +190,7 @@ export function Especialidades() {
               {/* Description */}
               <p
                 style={{
-                  color: "#9FA9B7",
+                  color: "var(--text-on-brand-secondary)",
                   fontSize: 14,
                   lineHeight: 1.65,
                   fontFamily: "Manrope, sans-serif",
@@ -208,7 +207,7 @@ export function Especialidades() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 6,
-                  color: "#B85C38",
+                  color: "var(--text-on-brand)",
                   fontSize: 13,
                   fontWeight: 700,
                   fontFamily: "Manrope, sans-serif",
@@ -227,8 +226,8 @@ export function Especialidades() {
             <div
               key={cat.id}
               style={{
-                backgroundColor: "#ffffff",
-                border: "0.5px solid rgba(42,50,66,0.12)",
+                backgroundColor: "var(--surface-elevated)",
+                border: "0.5px solid var(--border-subtle)",
                 display: "flex",
                 alignItems: "stretch",
                 overflow: "hidden",
@@ -247,7 +246,7 @@ export function Especialidades() {
               >
                 <span
                   style={{
-                    color: "#B85C38",
+                    color: "var(--accent-eyebrow)",
                     fontSize: 11,
                     fontWeight: 700,
                     letterSpacing: "0.2em",
@@ -259,7 +258,7 @@ export function Especialidades() {
                 </span>
                 <h3
                   style={{
-                    color: "#14233B",
+                    color: "var(--text-primary)",
                     fontSize: 17,
                     fontWeight: 700,
                     fontFamily: "Manrope, sans-serif",
@@ -271,7 +270,7 @@ export function Especialidades() {
                 </h3>
                 <p
                   style={{
-                    color: "#2A3242",
+                    color: "var(--text-primary)",
                     fontSize: 13,
                     lineHeight: 1.65,
                     fontFamily: "Manrope, sans-serif",
@@ -287,7 +286,7 @@ export function Especialidades() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 5,
-                    color: "#B85C38",
+                    color: "var(--brand-primary)",
                     fontSize: 12,
                     fontWeight: 700,
                     fontFamily: "Manrope, sans-serif",

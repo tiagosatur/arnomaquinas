@@ -1,4 +1,5 @@
 import { Shield, Layers, Wrench, MapPin } from "lucide-react";
+import familiaImg from "../../imports/diferenciais/familia.png";
 
 const diferenciais = [
   {
@@ -33,7 +34,7 @@ const diferenciais = [
 
 export function Diferenciais() {
   return (
-    <section id="sobre" style={{ backgroundColor: "#ffffff", padding: "96px 0", overflow: "hidden" }}>
+    <section id="sobre" style={{ backgroundColor: "var(--surface-elevated)", padding: "96px 0", overflow: "hidden" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           {/* Left: image */}
@@ -45,15 +46,22 @@ export function Diferenciais() {
                 left: -24,
                 width: "60%",
                 height: "60%",
-                backgroundColor: "#F4F1EA",
+                backgroundColor: "var(--surface-default)",
                 zIndex: 0,
               }}
             />
             <div style={{ position: "relative", zIndex: 1 }}>
               <img
-                src="https://images.unsplash.com/photo-1760611656160-7c7bf7e6da9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBvZmZpY2UlMjBmdXJuaXR1cmUlMjBleGVjdXRpdmUlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzgwNzY1MTMzfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Sala de reuniões corporativa"
-                style={{ width: "100%", height: 480, objectFit: "cover", display: "block" }}
+                src={familiaImg}
+                alt="Fotografia histórica de escritório, início do século XX"
+                style={{
+                  width: "100%",
+                  height: 480,
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  display: "block",
+                  filter: "grayscale(1) contrast(1.05)",
+                }}
               />
               {/* Floating badge */}
               <div
@@ -61,14 +69,14 @@ export function Diferenciais() {
                   position: "absolute",
                   right: -24,
                   bottom: -24,
-                  backgroundColor: "#14233B",
+                  backgroundColor: "var(--surface-anchor)",
                   padding: "28px 36px",
                   zIndex: 2,
                 }}
               >
                 <p
                   style={{
-                    color: "#B85C38",
+                    color: "var(--text-on-brand)",
                     fontSize: 52,
                     fontWeight: 800,
                     lineHeight: 1,
@@ -79,14 +87,13 @@ export function Diferenciais() {
                 </p>
                 <p
                   style={{
-                    color: "#F4F1EA",
+                    color: "var(--text-on-brand-secondary)",
                     fontSize: 11,
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     fontFamily: "Manrope, sans-serif",
                     marginTop: 4,
                     lineHeight: 1.5,
-                    opacity: 0.8,
                   }}
                 >
                   Anos de<br />Excelência
@@ -98,10 +105,10 @@ export function Diferenciais() {
           {/* Right: diferenciais list */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 10, height: 2, backgroundColor: "#B85C38" }} />
+              <div style={{ width: 10, height: 2, backgroundColor: "var(--accent-eyebrow)" }} />
               <span
                 style={{
-                  color: "#B85C38",
+                  color: "var(--accent-eyebrow)",
                   fontSize: 13,
                   fontWeight: 600,
                   letterSpacing: "0.15em",
@@ -118,7 +125,7 @@ export function Diferenciais() {
                 fontSize: 38,
                 fontWeight: 300,
                 lineHeight: 1.15,
-                color: "#14233B",
+                color: "var(--text-primary)",
                 letterSpacing: "-0.02em",
                 marginBottom: 16,
               }}
@@ -128,12 +135,11 @@ export function Diferenciais() {
             </h2>
             <p
               style={{
-                color: "#2A3242",
+                color: "var(--text-secondary)",
                 fontSize: 15,
                 lineHeight: 1.7,
                 fontFamily: "Manrope, sans-serif",
                 marginBottom: 40,
-                opacity: 0.7,
               }}
             >
               Nossa solidez não é apenas histórica — ela se manifesta em cada produto entregue,
@@ -150,7 +156,7 @@ export function Diferenciais() {
                       display: "flex",
                       gap: 20,
                       padding: "24px 0",
-                      borderBottom: "1px solid #E8E4DB",
+                      borderBottom: "1px solid var(--border-subtle)",
                     }}
                   >
                     <div
@@ -158,19 +164,19 @@ export function Diferenciais() {
                         flexShrink: 0,
                         width: 44,
                         height: 44,
-                        backgroundColor: "#F4F1EA",
+                        backgroundColor: "var(--surface-default)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                       }}
                     >
-                      <Icon size={18} color="#B85C38" />
+                      <Icon size={18} color="var(--brand-primary)" />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
                         <h4
                           style={{
-                            color: "#14233B",
+                            color: "var(--text-primary)",
                             fontSize: 15,
                             fontWeight: 700,
                             fontFamily: "Manrope, sans-serif",
@@ -180,7 +186,7 @@ export function Diferenciais() {
                         </h4>
                         <span
                           style={{
-                            color: "#B85C38",
+                            color: "var(--brand-primary)",
                             fontSize: 11,
                             fontWeight: 600,
                             letterSpacing: "0.12em",
@@ -193,11 +199,10 @@ export function Diferenciais() {
                       </div>
                       <p
                         style={{
-                          color: "#2A3242",
+                          color: "var(--text-secondary)",
                           fontSize: 14,
                           lineHeight: 1.7,
                           fontFamily: "Manrope, sans-serif",
-                          opacity: 0.7,
                         }}
                       >
                         {item.description}

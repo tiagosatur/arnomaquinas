@@ -10,16 +10,16 @@ const capacidades = [
 
 export function AutoridadeTecnica() {
   return (
-    <section id="servicos" style={{ backgroundColor: "#F4F1EA", padding: "96px 0" }}>
+    <section id="servicos" style={{ backgroundColor: "var(--surface-default)", padding: "96px 0" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
 
         {/* Centered header */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--accent-eyebrow)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -29,12 +29,12 @@ export function AutoridadeTecnica() {
             >
               Autoridade Técnica
             </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
           </div>
 
           <h2
             style={{
-              color: "#14233B",
+              color: "var(--text-primary)",
               fontFamily: "Manrope, sans-serif",
               fontSize: 38,
               fontWeight: 400,
@@ -48,13 +48,12 @@ export function AutoridadeTecnica() {
 
           <p
             style={{
-              color: "#2A3242",
+              color: "var(--text-secondary)",
               fontSize: 16,
               lineHeight: 1.7,
               fontFamily: "Manrope, sans-serif",
               maxWidth: 580,
               margin: "0 auto",
-              opacity: 0.65,
             }}
           >
             Mais do que vender — garantimos que seus equipamentos funcionem ao longo do tempo,
@@ -88,10 +87,10 @@ export function AutoridadeTecnica() {
             />
           </div>
 
-          {/* RIGHT: navy panel, same height, vertically centered content */}
+          {/* RIGHT: bordeaux panel */}
           <div
             style={{
-              backgroundColor: "#14233B",
+              backgroundColor: "var(--surface-anchor)",
               borderRadius: 4,
               padding: "40px 44px",
               display: "flex",
@@ -100,21 +99,18 @@ export function AutoridadeTecnica() {
             }}
           >
             {/* Panel heading */}
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
-              <CheckCircle size={16} color="#B85C38" />
-              <h3
-                style={{
-                  color: "#F4F1EA",
-                  fontSize: 20,
-                  fontWeight: 700,
-                  fontFamily: "Manrope, sans-serif",
-                  margin: 0,
-                  letterSpacing: "0.01em",
-                }}
-              >
-                O que oferecemos
-              </h3>
-            </div>
+            <h3
+              style={{
+                color: "var(--text-on-brand)",
+                fontSize: 20,
+                fontWeight: 700,
+                fontFamily: "Manrope, sans-serif",
+                margin: "0 0 24px",
+                letterSpacing: "0.01em",
+              }}
+            >
+              O que oferecemos
+            </h3>
 
             {/* Checklist */}
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -122,12 +118,12 @@ export function AutoridadeTecnica() {
                 <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
                   <CheckCircle
                     size={16}
-                    color="#B85C38"
+                    color="var(--text-on-brand-secondary)"
                     style={{ flexShrink: 0, marginTop: 2 }}
                   />
                   <p
                     style={{
-                      color: "#F4F1EA",
+                      color: "var(--text-on-brand)",
                       fontSize: 17,
                       lineHeight: 1.55,
                       fontFamily: "Manrope, sans-serif",

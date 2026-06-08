@@ -12,7 +12,7 @@ export function Hero() {
         minHeight: 560,
         marginTop: 88,
         overflow: "hidden",
-        backgroundColor: "#0D1A2E",
+        backgroundColor: "var(--surface-default)",
       }}
     >
       <img
@@ -29,7 +29,7 @@ export function Hero() {
         }}
       />
 
-      {/* Floating navy panel — inset from all edges */}
+      {/* Floating cream panel */}
       <div
         style={{
           position: "absolute",
@@ -37,20 +37,20 @@ export function Hero() {
           top: 44,
           bottom: 44,
           width: "clamp(380px, 40vw, 560px)",
-          backgroundColor: "#14233B",
+          backgroundColor: "var(--surface-default)",
           padding: 56,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          boxShadow: "0 8px 48px rgba(0,0,0,0.28), 0 2px 12px rgba(0,0,0,0.18)",
+          boxShadow: "var(--shadow-panel)",
         }}
       >
         {/* Eyebrow */}
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 32 }}>
-          <div style={{ width: 40, height: 2, backgroundColor: "#B85C38", flexShrink: 0 }} />
+          <div style={{ width: 40, height: 2, backgroundColor: "var(--accent-eyebrow)", flexShrink: 0 }} />
           <span
             style={{
-              color: "#B85C38",
+              color: "var(--accent-eyebrow)",
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: "0.15em",
@@ -66,7 +66,7 @@ export function Hero() {
         <div>
           <p
             style={{
-              color: "#F4F1EA",
+              color: "var(--text-primary)",
               fontSize: 40,
               fontWeight: 400,
               lineHeight: 1.12,
@@ -75,11 +75,11 @@ export function Hero() {
               margin: 0,
             }}
           >
-            Móveis e Equipamentos para Escritório
+            Móveis e equipamentos para escritório
           </p>
           <p
             style={{
-              color: "#B85C38",
+              color: "var(--accent-highlight)",
               fontSize: 40,
               fontWeight: 700,
               lineHeight: 1.12,
@@ -89,23 +89,23 @@ export function Hero() {
               marginBottom: 0,
             }}
           >
-            Solidez e Soluções Completas
+            Venda. Montagem. Manutenção.
           </p>
         </div>
 
         {/* Subhead */}
         <p
           style={{
-            color: "#9FA9B7",
+            color: "var(--text-secondary)",
             fontSize: 16,
             lineHeight: 1.6,
             fontFamily: "Manrope, sans-serif",
             fontWeight: 400,
             marginTop: 24,
             marginBottom: 0,
+            maxWidth: 520,
           }}
         >
-          Transformamos ambientes corporativos com expertise de meio século.
           Do móvel executivo ao equipamento especializado — soluções integradas
           para sua empresa crescer com excelência.
         </p>
@@ -118,8 +118,8 @@ export function Hero() {
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              backgroundColor: "#B85C38",
-              color: "#F4F1EA",
+              backgroundColor: "var(--brand-primary)",
+              color: "var(--text-on-brand)",
               padding: "13px 28px",
               fontSize: 13,
               fontWeight: 700,
@@ -130,8 +130,8 @@ export function Hero() {
               borderRadius: 2,
               transition: "background-color 0.2s",
             }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#984828")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#B85C38")}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary-hover)")}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary)")}
           >
             <BookOpen size={15} />
             Conheça nosso Catálogo
