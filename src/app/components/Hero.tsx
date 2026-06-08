@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full mt-[88px] overflow-hidden bg-surface xl:aspect-[21/9] xl:min-h-[560px]"
+      className="relative w-full mt-[88px] overflow-hidden bg-surface xl:aspect-[21/9] xl:min-h-[560px] xl:max-h-[820px]"
     >
       {/* Wrapper: stacks on mobile, side-by-side flow on md+, contents on xl
           (so photo/panel can position absolutely against the section) */}
