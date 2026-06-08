@@ -29,13 +29,13 @@ const steps = [
 
 export function Processo() {
   return (
-    <section style={{ backgroundColor: "#14233B", padding: "96px 0", position: "relative", overflow: "hidden" }}>
+    <section style={{ backgroundColor: "var(--surface-anchor)", padding: "96px 0", position: "relative", overflow: "hidden" }}>
       {/* Subtle dot texture */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)",
+          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(244,241,234,0.04) 1px, transparent 0)",
           backgroundSize: "32px 32px",
           pointerEvents: "none",
         }}
@@ -46,10 +46,10 @@ export function Processo() {
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 72 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
             <span
               style={{
-                color: "#B85C38",
+                color: "var(--text-on-brand-secondary)",
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: "0.15em",
@@ -59,13 +59,13 @@ export function Processo() {
             >
               Como Funciona
             </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "#B85C38" }} />
+            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
           </div>
 
           {/* Two-line headline — single weight throughout */}
           <p
             style={{
-              color: "#F4F1EA",
+              color: "var(--text-on-brand)",
               fontFamily: "Manrope, sans-serif",
               fontSize: 38,
               fontWeight: 400,
@@ -78,7 +78,7 @@ export function Processo() {
           </p>
           <p
             style={{
-              color: "#9FA9B7",
+              color: "var(--text-on-brand-secondary)",
               fontFamily: "Manrope, sans-serif",
               fontSize: 34,
               fontWeight: 400,
@@ -94,7 +94,7 @@ export function Processo() {
         {/* Steps grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32, position: "relative" }}>
 
-          {/* Connector line — 2px, muted terracotta */}
+          {/* Connector line */}
           <div
             style={{
               position: "absolute",
@@ -102,7 +102,7 @@ export function Processo() {
               left: "12.5%",
               right: "12.5%",
               height: 2,
-              backgroundColor: "rgba(184,92,56,0.4)",
+              backgroundColor: "var(--tint-on-brand-medium)",
               zIndex: 0,
             }}
           />
@@ -113,23 +113,23 @@ export function Processo() {
               <div key={i} style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
                   <div style={{ position: "relative" }}>
-                    {/* Circle node — elevated navy fill + terracotta border */}
+                    {/* Circle node — darker bordeaux fill + cream border */}
                     <div
                       style={{
                         width: 112,
                         height: 112,
                         borderRadius: "50%",
-                        border: "1.5px solid #B85C38",
-                        backgroundColor: "#1D3252",
+                        border: "1.5px solid var(--text-on-brand-secondary)",
+                        backgroundColor: "var(--color-bordeaux-700)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                       }}
                     >
-                      <Icon size={28} color="#B85C38" />
+                      <Icon size={28} color="var(--text-on-brand)" />
                     </div>
 
-                    {/* Step badge — circular, terracotta fill, bone number */}
+                    {/* Step badge — cream fill, bordeaux number */}
                     <span
                       style={{
                         position: "absolute",
@@ -138,11 +138,11 @@ export function Processo() {
                         width: 26,
                         height: 26,
                         borderRadius: "50%",
-                        backgroundColor: "#B85C38",
+                        backgroundColor: "var(--text-on-brand)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "#F4F1EA",
+                        color: "var(--brand-primary)",
                         fontSize: 11,
                         fontWeight: 800,
                         fontFamily: "Manrope, sans-serif",
@@ -156,7 +156,7 @@ export function Processo() {
 
                 <h3
                   style={{
-                    color: "#F4F1EA",
+                    color: "var(--text-on-brand)",
                     fontSize: 16,
                     fontWeight: 700,
                     fontFamily: "Manrope, sans-serif",
@@ -167,7 +167,7 @@ export function Processo() {
                 </h3>
                 <p
                   style={{
-                    color: "#9FA9B7",
+                    color: "var(--text-on-brand-secondary)",
                     fontSize: 14,
                     lineHeight: 1.7,
                     fontFamily: "Manrope, sans-serif",
@@ -181,7 +181,7 @@ export function Processo() {
           })}
         </div>
 
-        {/* CTA */}
+        {/* CTA — inverted: cream on bordeaux panel */}
         <div style={{ textAlign: "center", marginTop: 64 }}>
           <a
             href="#contato"
@@ -189,8 +189,8 @@ export function Processo() {
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              backgroundColor: "#B85C38",
-              color: "#F4F1EA",
+              backgroundColor: "var(--text-on-brand)",
+              color: "var(--brand-primary)",
               padding: "14px 40px",
               fontSize: 14,
               fontWeight: 700,
@@ -201,8 +201,8 @@ export function Processo() {
               borderRadius: 2,
               transition: "background-color 0.2s",
             }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#984828")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#B85C38")}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--surface-hover)")}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--text-on-brand)")}
           >
             Fale com um Especialista
           </a>

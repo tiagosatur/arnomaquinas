@@ -1,0 +1,97 @@
+/* ============================================================
+   ArnoMáquinas — Design Tokens
+   ------------------------------------------------------------
+   3 camadas:
+     1. PRIMITIVOS  → paleta crua (não consumir direto em componentes)
+     2. SEMÂNTICOS  → intent (consumir esses)
+     3. @theme      → expõe alguns como utilities Tailwind
+   ------------------------------------------------------------
+   Pra trocar a paleta, edite os PRIMITIVOS. Os semânticos
+   se atualizam automaticamente em todo o site.
+   ============================================================ */
+
+:root {
+  /* ─── 1. PRIMITIVOS ─── */
+
+  /* Bordeaux (marca) */
+  --color-bordeaux-50:  #FBF3F4;
+  --color-bordeaux-100: #F2DCDF;
+  --color-bordeaux-300: #C97480;
+  --color-bordeaux-500: #500915;
+  --color-bordeaux-600: #6B0F1D;
+  --color-bordeaux-700: #420711;
+  --color-bordeaux-900: #2A040A;
+
+  /* Cream / off-white */
+  --color-cream-50:  #FBFAF6;
+  --color-cream-100: #F4F1EA;
+  --color-cream-200: #E8DCC8;
+
+  /* Warm charcoal (texto principal) */
+  --color-charcoal-900: #1A1410;
+  --color-charcoal-700: #3D3530;
+  --color-charcoal-500: #5D5550;
+  --color-charcoal-300: #8B8480;
+
+  /* Pure */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+
+  /* ─── 2. SEMÂNTICOS (intent) ─── */
+
+  /* Brand */
+  --brand-primary:         var(--color-bordeaux-500);
+  --brand-primary-hover:   var(--color-bordeaux-600);
+  --brand-primary-pressed: var(--color-bordeaux-700);
+
+  /* Surfaces */
+  --surface-default:  var(--color-cream-100);
+  --surface-elevated: var(--color-white);
+  --surface-anchor:   var(--color-bordeaux-500);
+  --surface-muted:    var(--color-cream-50);
+  --surface-hover:    var(--color-cream-200);
+
+  /* Text on cream/light */
+  --text-primary:   var(--color-charcoal-900);
+  --text-secondary: rgba(26, 20, 16, 0.72);
+  --text-muted:     rgba(26, 20, 16, 0.65);
+  --text-tertiary:  rgba(26, 20, 16, 0.55);
+
+  /* Text on bordeaux/dark */
+  --text-on-brand:           var(--color-cream-100);
+  --text-on-brand-secondary: rgba(244, 241, 234, 0.78);
+  --text-on-brand-tertiary:  rgba(244, 241, 234, 0.55);
+
+  /* Accents */
+  --accent-eyebrow:   var(--color-bordeaux-500);
+  --accent-highlight: var(--color-bordeaux-500);
+
+  /* Borders */
+  --border-subtle:           rgba(26, 20, 16, 0.10);
+  --border-on-brand:         rgba(244, 241, 234, 0.30);
+  --border-on-brand-subtle:  rgba(244, 241, 234, 0.10);
+  --border-on-brand-faint:   rgba(244, 241, 234, 0.06);
+  --border-brand-subtle:     rgba(80, 9, 21, 0.10);
+  --border-brand-faint:      rgba(80, 9, 21, 0.06);
+
+  /* Tints */
+  --tint-on-brand-weak:   rgba(244, 241, 234, 0.04);
+  --tint-on-brand-medium: rgba(244, 241, 234, 0.10);
+  --tint-brand-weak:      rgba(80, 9, 21, 0.12);
+
+  /* Shadows */
+  --shadow-panel: 0 8px 48px rgba(0, 0, 0, 0.22), 0 2px 12px rgba(0, 0, 0, 0.14);
+  --shadow-header: 0 1px 12px rgba(80, 9, 21, 0.10);
+}
+
+/* ─── 3. Tailwind utilities mapping ─── */
+@theme {
+  --color-brand:        var(--brand-primary);
+  --color-brand-hover:  var(--brand-primary-hover);
+  --color-surface:      var(--surface-default);
+  --color-anchor:       var(--surface-anchor);
+  --color-ink:          var(--text-primary);
+  --color-ink-soft:     var(--text-secondary);
+  --color-on-brand:     var(--text-on-brand);
+}

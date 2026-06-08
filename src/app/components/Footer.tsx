@@ -4,7 +4,7 @@ export function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer style={{ backgroundColor: "#14233B", borderTop: "1px solid #1D3252" }}>
+    <footer style={{ backgroundColor: "var(--surface-anchor)", borderTop: "1px solid var(--border-on-brand-subtle)" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "64px 48px 40px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
           {/* Brand */}
@@ -14,27 +14,27 @@ export function Footer() {
                 style={{
                   width: 40,
                   height: 40,
-                  backgroundColor: "#B85C38",
+                  backgroundColor: "var(--text-on-brand)",
                   borderRadius: 6,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <span style={{ color: "#F4F1EA", fontSize: 18, fontWeight: 800, fontFamily: "Manrope, sans-serif" }}>A</span>
+                <span style={{ color: "var(--brand-primary)", fontSize: 18, fontWeight: 800, fontFamily: "Manrope, sans-serif" }}>A</span>
               </div>
               <div>
-                <p style={{ color: "#F4F1EA", fontSize: 16, fontWeight: 700, fontFamily: "Manrope, sans-serif", letterSpacing: "0.04em" }}>
+                <p style={{ color: "var(--text-on-brand)", fontSize: 16, fontWeight: 700, fontFamily: "Manrope, sans-serif", letterSpacing: "0.04em" }}>
                   ARNOMÁQUINAS
                 </p>
-                <p style={{ color: "#B85C38", fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "Manrope, sans-serif" }}>
+                <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "Manrope, sans-serif" }}>
                   Desde 1975
                 </p>
               </div>
             </div>
             <p
               style={{
-                color: "#9FA9B7",
+                color: "var(--text-on-brand-secondary)",
                 fontSize: 14,
                 lineHeight: 1.8,
                 fontFamily: "Manrope, sans-serif",
@@ -44,28 +44,35 @@ export function Footer() {
               50 anos transformando ambientes corporativos com móveis, equipamentos e soluções completas para escritório.
             </p>
             <div style={{ display: "flex", gap: 8, marginTop: 24 }}>
-              {[Instagram, Linkedin, Facebook].map((Icon, i) => (
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/arnomaquinas/", label: "Instagram" },
+                { Icon: Linkedin, href: "#", label: "LinkedIn" },
+                { Icon: Facebook, href: "#", label: "Facebook" },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href === "#" ? undefined : "_blank"}
+                  rel={href === "#" ? undefined : "noopener noreferrer"}
+                  aria-label={label}
                   style={{
                     width: 36,
                     height: 36,
-                    border: "1px solid #1D3252",
+                    border: "1px solid var(--border-on-brand-subtle)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#9FA9B7",
+                    color: "var(--text-on-brand-secondary)",
                     textDecoration: "none",
                     transition: "border-color 0.2s, color 0.2s",
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = "rgba(184,92,56,0.5)";
-                    e.currentTarget.style.color = "#B85C38";
+                    e.currentTarget.style.borderColor = "var(--text-on-brand-secondary)";
+                    e.currentTarget.style.color = "var(--text-on-brand)";
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = "#1D3252";
-                    e.currentTarget.style.color = "#9FA9B7";
+                    e.currentTarget.style.borderColor = "var(--border-on-brand-subtle)";
+                    e.currentTarget.style.color = "var(--text-on-brand-secondary)";
                   }}
                 >
                   <Icon size={14} />
@@ -78,7 +85,7 @@ export function Footer() {
           <div>
             <h5
               style={{
-                color: "#F4F1EA",
+                color: "var(--text-on-brand)",
                 fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.18em",
@@ -101,14 +108,14 @@ export function Footer() {
                   <a
                     href={link.href}
                     style={{
-                      color: "#9FA9B7",
+                      color: "var(--text-on-brand-secondary)",
                       fontSize: 14,
                       fontFamily: "Manrope, sans-serif",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#B85C38")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "#9FA9B7")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
                   >
                     {link.label}
                   </a>
@@ -121,7 +128,7 @@ export function Footer() {
           <div>
             <h5
               style={{
-                color: "#F4F1EA",
+                color: "var(--text-on-brand)",
                 fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.18em",
@@ -145,14 +152,14 @@ export function Footer() {
                   <a
                     href="#produtos"
                     style={{
-                      color: "#9FA9B7",
+                      color: "var(--text-on-brand-secondary)",
                       fontSize: 14,
                       fontFamily: "Manrope, sans-serif",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#B85C38")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "#9FA9B7")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
                   >
                     {item}
                   </a>
@@ -165,7 +172,7 @@ export function Footer() {
           <div>
             <h5
               style={{
-                color: "#F4F1EA",
+                color: "var(--text-on-brand)",
                 fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.18em",
@@ -177,13 +184,13 @@ export function Footer() {
               Contato
             </h5>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <p style={{ color: "#9FA9B7", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
+              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
                 (55) 98454-9195
               </p>
-              <p style={{ color: "#9FA9B7", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
+              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
                 contato@arnomaquinas.com.br
               </p>
-              <p style={{ color: "#9FA9B7", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
+              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
                 Seg–Sex: 8h às 18h<br />Sáb: 8h às 13h
               </p>
             </div>
@@ -193,14 +200,14 @@ export function Footer() {
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: "1px solid #1D3252",
+            borderTop: "1px solid var(--border-on-brand-subtle)",
             paddingTop: 28,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <p style={{ color: "#9FA9B7", fontSize: 13, fontFamily: "Manrope, sans-serif", opacity: 0.55 }}>
+          <p style={{ color: "var(--text-on-brand-tertiary)", fontSize: 13, fontFamily: "Manrope, sans-serif" }}>
             © {new Date().getFullYear()} Arnomáquinas. Todos os direitos reservados.
           </p>
           <button
@@ -208,23 +215,23 @@ export function Footer() {
             style={{
               width: 36,
               height: 36,
-              border: "1px solid #1D3252",
+              border: "1px solid var(--border-on-brand-subtle)",
               backgroundColor: "transparent",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#9FA9B7",
+              color: "var(--text-on-brand-secondary)",
               cursor: "pointer",
               transition: "border-color 0.2s, color 0.2s",
             }}
             aria-label="Voltar ao topo"
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = "rgba(184,92,56,0.4)";
-              e.currentTarget.style.color = "#B85C38";
+              e.currentTarget.style.borderColor = "var(--text-on-brand-secondary)";
+              e.currentTarget.style.color = "var(--text-on-brand)";
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.borderColor = "#1D3252";
-              e.currentTarget.style.color = "#9FA9B7";
+              e.currentTarget.style.borderColor = "var(--border-on-brand-subtle)";
+              e.currentTarget.style.color = "var(--text-on-brand-secondary)";
             }}
           >
             <ArrowUp size={14} />

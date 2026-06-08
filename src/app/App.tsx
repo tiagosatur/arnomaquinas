@@ -17,9 +17,9 @@ export default function App() {
       <StatsStrip />
       <Especialidades />
       <Diferenciais />
-      <Processo />
       <AutoridadeTecnica />
       <SocialProof />
+      <Processo />
       <Contato />
       <Footer />
     </div>
