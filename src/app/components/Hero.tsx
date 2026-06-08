@@ -1,7 +1,19 @@
 import { BookOpen } from "lucide-react";
+import { useState, useRef } from "react";
 import heroImg from "../../imports/hero/hero.png";
 
 export function Hero() {
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
+  const photoRef = useRef<HTMLDivElement>(null);
+
+  function handleMouseMove(e: React.MouseEvent) {
+    const rect = photoRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ rx: -cy * 4, ry: cx * 6 });
+  }
+
   return (
     <section
       id="inicio"
@@ -11,13 +23,20 @@ export function Hero() {
           (so photo/panel can position absolutely against the section) */}
       <div className="md:flex md:flex-row-reverse md:items-stretch xl:contents">
         {/* Photo: 3:2 mobile, 16:9 sm, fills column at md/lg, fills section at xl */}
-        <div className="relative aspect-[3/2] sm:aspect-[16/9]
-                        md:flex-1 md:aspect-auto
-                        xl:absolute xl:inset-0">
+        <div
+          ref={photoRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setTilt({ rx: 0, ry: 0 })}
+          className="relative aspect-[3/2] sm:aspect-[16/9]
+                     md:flex-1 md:aspect-auto
+                     xl:absolute xl:inset-0"
+          style={{ perspective: "1200px" }}
+        >
           <img
             src={heroImg}
             alt="Sala de reunião executiva com cadeiras premium"
-            className="block w-full h-full object-cover object-right"
+            className="block w-full h-full object-cover object-right will-change-transform transition-transform duration-[350ms] ease-out"
+            style={{ transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) scale(1.02)` }}
           />
         </div>
 
