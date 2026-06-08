@@ -10,127 +10,53 @@ const capacidades = [
 
 export function AutoridadeTecnica() {
   return (
-    <section id="servicos" style={{ backgroundColor: "var(--surface-default)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
+    <section id="servicos" className="bg-surface section-y">
+      <div className="container-page">
 
         {/* Centered header */}
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
-            <span
-              style={{
-                color: "var(--accent-eyebrow)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-              }}
-            >
-              Autoridade Técnica
-            </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="w-8 h-px bg-eyebrow" />
+            <span className="eyebrow-text">Autoridade Técnica</span>
+            <div className="w-8 h-px bg-eyebrow" />
           </div>
 
-          <h2
-            style={{
-              color: "var(--text-primary)",
-              fontFamily: "Manrope, sans-serif",
-              fontSize: 38,
-              fontWeight: 400,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              margin: "0 0 16px",
-            }}
-          >
+          <h2 className="text-ink text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] mb-4 m-0">
             Assistência Técnica Autorizada
           </h2>
 
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              fontSize: 16,
-              lineHeight: 1.7,
-              fontFamily: "Manrope, sans-serif",
-              maxWidth: 580,
-              margin: "0 auto",
-            }}
-          >
+          <p className="text-ink-soft text-base leading-[1.7] max-w-[580px] mx-auto m-0">
             Mais do que vender — garantimos que seus equipamentos funcionem ao longo do tempo,
             com equipe técnica certificada diretamente pelos fabricantes.
           </p>
         </div>
 
-        {/* Two equal-height columns */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 3,
-            alignItems: "stretch",
-            height: 500,
-          }}
-        >
-          {/* LEFT: photo, full column height */}
-          <div style={{ overflow: "hidden", borderRadius: 4 }}>
+        {/* 1-col mobile, 2-col equal-height on lg+ */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[3px] items-stretch lg:h-[500px]">
+          {/* LEFT: photo */}
+          <div className="overflow-hidden rounded-sm aspect-[16/10] lg:aspect-auto">
             <img
               src="https://images.unsplash.com/photo-1721332154191-ba5f1534266e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHx0ZWNobmljYWwlMjBzZXJ2aWNlJTIwcmVwYWlyJTIwZXF1aXBtZW50JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc4MDc2NTE0MXww&ixlib=rb-4.1.0&q=80&w=1080"
               alt="Técnico realizando manutenção de equipamento"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
-                filter: "saturate(0.82) sepia(0.07) contrast(1.03)",
-              }}
+              className="w-full h-full object-cover object-center block photo-graded"
             />
           </div>
 
           {/* RIGHT: bordeaux panel */}
-          <div
-            style={{
-              backgroundColor: "var(--surface-anchor)",
-              borderRadius: 4,
-              padding: "40px 44px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            {/* Panel heading */}
-            <h3
-              style={{
-                color: "var(--text-on-brand)",
-                fontSize: 20,
-                fontWeight: 700,
-                fontFamily: "Manrope, sans-serif",
-                margin: "0 0 24px",
-                letterSpacing: "0.01em",
-              }}
-            >
+          <div className="bg-anchor rounded-sm px-8 py-10 sm:px-11 sm:py-12 flex flex-col justify-center">
+            <h3 className="text-on-brand text-xl font-bold tracking-[0.01em] mb-6 m-0">
               O que oferecemos
             </h3>
 
-            {/* Checklist */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className="flex flex-col gap-4">
               {capacidades.map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+                <div key={item} className="flex items-start gap-3.5">
                   <CheckCircle
                     size={16}
                     color="var(--text-on-brand-secondary)"
-                    style={{ flexShrink: 0, marginTop: 2 }}
+                    className="shrink-0 mt-0.5"
                   />
-                  <p
-                    style={{
-                      color: "var(--text-on-brand)",
-                      fontSize: 17,
-                      lineHeight: 1.55,
-                      fontFamily: "Manrope, sans-serif",
-                      fontWeight: 400,
-                      margin: 0,
-                    }}
-                  >
+                  <p className="text-on-brand text-[17px] leading-[1.55] m-0">
                     {item}
                   </p>
                 </div>
