@@ -20,6 +20,7 @@
   --color-elevated:        var(--surface-elevated);
   --color-muted:           var(--surface-muted);
   --color-anchor:          var(--surface-anchor);
+  --color-anchor-deep:     var(--surface-anchor-deep);
 
   /* Texto sobre creme/light (use como text-*) */
   --color-ink:             var(--text-primary);

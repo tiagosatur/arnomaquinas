@@ -59,11 +59,12 @@
   --brand-primary-pressed: var(--color-bordeaux-700);
 
   /* Surfaces */
-  --surface-default:  var(--color-cream-100);
-  --surface-elevated: var(--color-white);
-  --surface-anchor:   var(--color-bordeaux-500);
-  --surface-muted:    var(--color-cream-50);
-  --surface-hover:    var(--color-cream-200);
+  --surface-default:     var(--color-cream-100);
+  --surface-elevated:    var(--color-white);
+  --surface-anchor:      var(--color-bordeaux-500);
+  --surface-anchor-deep: var(--color-bordeaux-700);  /* form section, more rest/serious */
+  --surface-muted:       var(--color-cream-50);
+  --surface-hover:       var(--color-cream-200);
 
   /* Text on cream/light */
   --text-primary:   var(--color-charcoal-900);

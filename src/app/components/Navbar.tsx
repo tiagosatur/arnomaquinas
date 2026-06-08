@@ -30,6 +30,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-surface transition-shadow duration-300 ${
@@ -92,31 +98,59 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile full-screen overlay menu */}
       {menuOpen && (
-        <div className="bg-surface border-t border-line-brand-soft px-6 pt-4 pb-6">
-          <nav className="flex flex-col gap-0">
+        <div className="fixed inset-0 z-[60] bg-surface flex flex-col lg:hidden">
+          {/* Top bar: logo + close (mirrors header height) */}
+          <div className="container-page flex items-center justify-between h-[88px] shrink-0 border-b border-line-brand-faint">
+            <a
+              href="#"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 no-underline"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand">
+                <span className="text-on-brand text-[22px] font-extrabold">A</span>
+              </div>
+              <p className="text-ink text-xl font-bold leading-none tracking-[0.04em]">
+                ARNOMÁQUINAS
+              </p>
+            </a>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-ink p-3 bg-transparent border-0 cursor-pointer"
+              aria-label="Fechar menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          {/* Nav links — fills available space */}
+          <nav className="flex flex-col flex-1 container-page pt-4 overflow-y-auto">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-ink text-[15px] font-medium no-underline py-[14px] border-b border-line-brand-soft tracking-[0.04em]"
+                className="text-ink text-[17px] font-medium no-underline py-5 border-b border-line-brand-soft tracking-[0.04em]"
               >
                 {link.label}
               </a>
             ))}
+          </nav>
+
+          {/* CTA pinned to bottom of screen */}
+          <div className="container-page pb-8 pt-4 shrink-0">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-brand px-6 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-brand no-underline text-center mt-4"
+              className="flex items-center justify-center gap-2.5 w-full rounded-sm bg-brand px-6 py-4 text-sm font-bold uppercase tracking-[0.08em] text-on-brand no-underline"
             >
               <WhatsAppIcon size={16} />
               Solicitar Orçamento
             </a>
-          </nav>
+          </div>
         </div>
       )}
     </header>
