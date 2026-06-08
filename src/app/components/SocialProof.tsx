@@ -48,65 +48,40 @@ const depoimentos = [
 
 export function SocialProof() {
   return (
-    <section style={{ backgroundColor: "var(--surface-elevated)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
+    <section className="bg-elevated section-y">
+      <div className="container-page">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
-            <span
-              style={{
-                color: "var(--accent-eyebrow)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-              }}
-            >
-              O que dizem nossos clientes
-            </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-eyebrow" />
+            <span className="eyebrow-text">O que dizem nossos clientes</span>
+            <div className="w-8 h-px bg-eyebrow" />
           </div>
-          <h2
-            style={{
-              color: "var(--text-primary)",
-              fontFamily: "Manrope, sans-serif",
-              fontSize: 38,
-              fontWeight: 300,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="text-ink text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] m-0">
             Credibilidade construída{" "}
-            <strong style={{ fontWeight: 700 }}>cliente por cliente</strong>
+            <strong className="font-bold">cliente por cliente</strong>
           </h2>
         </div>
 
-        {/* Depoimentos */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 72, alignItems: "center" }}>
+        {/* Testimonials: 1-col mobile, 3-col lg (center scaled up) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-4 mb-16 lg:mb-20 items-center">
           {depoimentos.map((dep, i) => {
             const isCenter = i === 1;
             return (
               <div
                 key={dep.id}
-                style={{
-                  position: "relative",
-                  padding: isCenter ? 40 : 32,
-                  backgroundColor: isCenter ? "var(--surface-anchor)" : "var(--surface-default)",
-                  transform: isCenter ? "scale(1.08)" : "scale(1)",
-                  boxShadow: isCenter
-                    ? "0 20px 40px rgba(80, 9, 21, 0.25)"
-                    : "0 8px 20px rgba(0, 0, 0, 0.06)",
-                  zIndex: isCenter ? 2 : 1,
-                }}
+                className={`relative p-8 ${
+                  isCenter
+                    ? "lg:p-10 bg-anchor lg:scale-[1.08] shadow-[0_20px_40px_rgba(80,9,21,0.25)] lg:z-[2]"
+                    : "bg-surface shadow-[0_8px_20px_rgba(0,0,0,0.06)]"
+                }`}
               >
                 <Quote
                   size={28}
-                  color={isCenter ? "var(--text-on-brand-tertiary)" : "var(--tint-brand-weak)"}
-                  style={{ marginBottom: 20 }}
+                  color={isCenter ? "var(--text-on-brand-tertiary)" : "rgba(80, 9, 21, 0.12)"}
+                  className="mb-5"
                 />
-                <div style={{ display: "flex", marginBottom: 16 }}>
+                <div className="flex mb-4">
                   {Array.from({ length: dep.rating }).map((_, j) => (
                     <Star
                       key={j}
@@ -116,51 +91,17 @@ export function SocialProof() {
                     />
                   ))}
                 </div>
-                <p
-                  style={{
-                    color: isCenter ? "var(--text-on-brand)" : "var(--text-secondary)",
-                    fontSize: 14,
-                    lineHeight: 1.8,
-                    fontFamily: "Manrope, sans-serif",
-                    marginBottom: 28,
-                  }}
-                >
+                <p className={`text-sm leading-[1.8] mb-7 m-0 ${isCenter ? "text-on-brand" : "text-ink-soft"}`}>
                   "{dep.texto}"
                 </p>
-                <div
-                  style={{
-                    borderTop: `1px solid ${isCenter ? "var(--border-on-brand-subtle)" : "var(--border-subtle)"}`,
-                    paddingTop: 20,
-                  }}
-                >
-                  <p
-                    style={{
-                      color: isCenter ? "var(--text-on-brand)" : "var(--text-primary)",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      fontFamily: "Manrope, sans-serif",
-                    }}
-                  >
+                <div className={`pt-5 border-t ${isCenter ? "border-line-on-brand-soft" : "border-line"}`}>
+                  <p className={`text-sm font-bold m-0 ${isCenter ? "text-on-brand" : "text-ink"}`}>
                     {dep.nome}
                   </p>
-                  <p
-                    style={{
-                      color: isCenter ? "var(--text-on-brand-secondary)" : "var(--brand-primary)",
-                      fontSize: 12,
-                      fontFamily: "Manrope, sans-serif",
-                      marginTop: 2,
-                    }}
-                  >
+                  <p className={`text-xs mt-0.5 m-0 ${isCenter ? "text-on-brand-soft" : "text-brand"}`}>
                     {dep.cargo}
                   </p>
-                  <p
-                    style={{
-                      color: isCenter ? "var(--text-on-brand-tertiary)" : "var(--text-tertiary)",
-                      fontSize: 12,
-                      fontFamily: "Manrope, sans-serif",
-                      marginTop: 2,
-                    }}
-                  >
+                  <p className={`text-xs mt-0.5 m-0 ${isCenter ? "text-on-brand-faint" : "text-ink-tertiary"}`}>
                     {dep.empresa}
                   </p>
                 </div>
@@ -170,62 +111,22 @@ export function SocialProof() {
         </div>
 
         {/* Partners strip */}
-        <div style={{ paddingTop: 80 }}>
-          {/* Eyebrow */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 48 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
-            <span
-              style={{
-                color: "var(--accent-eyebrow)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-              }}
-            >
-              Marcas e Parceiros de Confiança
-            </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--accent-eyebrow)" }} />
+        <div className="pt-12 lg:pt-20">
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <div className="w-8 h-px bg-eyebrow" />
+            <span className="eyebrow-text text-center">Marcas e Parceiros de Confiança</span>
+            <div className="w-8 h-px bg-eyebrow" />
           </div>
 
-          {/* Logo row — no boxes, no borders */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "32px 48px",
-            }}
-          >
+          {/* Logo grid */}
+          <div className="flex flex-wrap justify-center items-center gap-y-8 gap-x-8 sm:gap-x-12">
             {marcasComIcone.map(({ name, icon: Icon }) => (
               <div
                 key={name}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 8,
-                  opacity: 0.3,
-                  transition: "opacity 0.2s",
-                  cursor: "default",
-                  userSelect: "none",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = "0.75")}
-                onMouseLeave={e => (e.currentTarget.style.opacity = "0.3")}
+                className="flex flex-col items-center gap-2 opacity-30 hover:opacity-75 transition-opacity cursor-default select-none"
               >
                 <Icon size={28} color="var(--text-primary)" strokeWidth={1.5} />
-                <span
-                  style={{
-                    color: "var(--text-primary)",
-                    fontSize: 10,
-                    fontWeight: 700,
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    fontFamily: "Manrope, sans-serif",
-                  }}
-                >
+                <span className="text-ink text-[10px] font-bold tracking-[0.14em] uppercase">
                   {name}
                 </span>
               </div>
