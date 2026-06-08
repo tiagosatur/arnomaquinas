@@ -5,137 +5,66 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      style={{
-        position: "relative",
-        width: "100%",
-        aspectRatio: "21 / 9",
-        minHeight: 560,
-        marginTop: 88,
-        overflow: "hidden",
-        backgroundColor: "var(--surface-default)",
-      }}
+      className="relative w-full mt-[88px] overflow-hidden bg-surface xl:aspect-[21/9] xl:min-h-[560px] xl:max-h-[820px]"
     >
-      <img
-        src={heroImg}
-        alt="Sala de reunião executiva com cadeiras premium"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "right center",
-          display: "block",
-        }}
-      />
-
-      {/* Floating cream panel */}
-      <div
-        style={{
-          position: "absolute",
-          left: 44,
-          top: 44,
-          bottom: 44,
-          width: "clamp(380px, 40vw, 560px)",
-          backgroundColor: "var(--surface-default)",
-          padding: 56,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          boxShadow: "var(--shadow-panel)",
-        }}
-      >
-        {/* Eyebrow */}
-        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 32 }}>
-          <div style={{ width: 40, height: 2, backgroundColor: "var(--accent-eyebrow)", flexShrink: 0 }} />
-          <span
-            style={{
-              color: "var(--accent-eyebrow)",
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              fontFamily: "Manrope, sans-serif",
-            }}
-          >
-            Desde 1975
-          </span>
+      {/* Wrapper: stacks on mobile, side-by-side flow on md+, contents on xl
+          (so photo/panel can position absolutely against the section) */}
+      <div className="md:flex md:flex-row-reverse md:items-stretch xl:contents">
+        {/* Photo: 3:2 mobile, 16:9 sm, fills column at md/lg, fills section at xl */}
+        <div className="relative aspect-[3/2] sm:aspect-[16/9]
+                        md:flex-1 md:aspect-auto
+                        xl:absolute xl:inset-0">
+          <img
+            src={heroImg}
+            alt="Sala de reunião executiva com cadeiras premium"
+            className="block w-full h-full object-cover object-right"
+          />
         </div>
 
-        {/* Headline */}
-        <div>
-          <p
-            style={{
-              color: "var(--text-primary)",
-              fontSize: 40,
-              fontWeight: 400,
-              lineHeight: 1.12,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "-0.02em",
-              margin: 0,
-            }}
-          >
-            Móveis e equipamentos para escritório
-          </p>
-          <p
-            style={{
-              color: "var(--accent-highlight)",
-              fontSize: 40,
-              fontWeight: 700,
-              lineHeight: 1.12,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "-0.02em",
-              marginTop: 20,
-              marginBottom: 0,
-            }}
-          >
-            Venda. Montagem. Manutenção.
-          </p>
-        </div>
-
-        {/* Subhead */}
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            fontSize: 16,
-            lineHeight: 1.6,
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            marginTop: 24,
-            marginBottom: 0,
-            maxWidth: 520,
-          }}
+        {/* Cream panel: stacks below photo on mobile, side-by-side flow on md+,
+            floating absolute on xl+ */}
+        <div
+          className="relative bg-surface p-6 sm:p-10 flex flex-col justify-center
+                     md:w-[45%] md:p-10 lg:p-12
+                     xl:absolute xl:top-16 xl:bottom-16
+                     xl:left-[calc(48px+max(0px,(100vw-1440px)/2))]
+                     xl:w-[clamp(420px,38vw,560px)] xl:p-14
+                     xl:shadow-[var(--shadow-panel)]"
         >
-          Do móvel executivo ao equipamento especializado — soluções integradas
-          para sua empresa crescer com excelência.
-        </p>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-[14px] mb-6 xl:mb-8">
+            <div className="w-10 h-0.5 bg-eyebrow shrink-0" />
+            <span className="eyebrow-text">Desde 1975</span>
+          </div>
 
-        {/* CTA */}
-        <div style={{ marginTop: 32 }}>
-          <a
-            href="#produtos"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              backgroundColor: "var(--brand-primary)",
-              color: "var(--text-on-brand)",
-              padding: "13px 28px",
-              fontSize: 13,
-              fontWeight: 700,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              borderRadius: 2,
-              transition: "background-color 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary-hover)")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary)")}
-          >
-            <BookOpen size={15} />
-            Conheça nosso Catálogo
-          </a>
+          {/* Headline */}
+          <div>
+            <p className="text-ink text-[26px] sm:text-[32px] xl:text-[40px] font-normal leading-[1.12] tracking-[-0.02em] m-0">
+              Móveis e equipamentos para escritório
+            </p>
+            <p className="text-highlight text-[26px] sm:text-[32px] xl:text-[40px] font-bold leading-[1.12] tracking-[-0.02em] mt-4 xl:mt-5 mb-0">
+              Venda. Montagem. Manutenção.
+            </p>
+          </div>
+
+          {/* Subhead */}
+          <p className="text-ink-soft text-[15px] xl:text-base leading-[1.6] font-normal mt-5 xl:mt-6 mb-0 max-w-[520px]">
+            Do móvel executivo ao equipamento especializado — soluções integradas
+            para sua empresa crescer com excelência.
+          </p>
+
+          {/* CTA */}
+          <div className="mt-7 xl:mt-8">
+            <a
+              href="#produtos"
+              className="inline-flex items-center gap-2.5 rounded-sm bg-brand text-on-brand
+                         px-7 py-[13px] text-[13px] font-bold uppercase tracking-[0.08em] no-underline
+                         transition-colors duration-200 hover:bg-brand-hover"
+            >
+              <BookOpen size={15} />
+              Conheça nosso Catálogo
+            </a>
+          </div>
         </div>
       </div>
     </section>

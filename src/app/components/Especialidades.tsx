@@ -1,13 +1,20 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import moveisImg from "../../imports/especialidades/moveis.png";
 import cadeirasImg from "../../imports/especialidades/cadeiras.png";
 import expedienteImg from "../../imports/especialidades/expediente.png";
+import moveisMadeiraPdf from "../../imports/catalogos/moveis-de-madeira.pdf";
 
-// Warm-neutral CSS grade applied identically to all photos:
-// saturate(0.82) → -18% saturation; sepia(0.07) → slight warm cast; contrast(1.03) → compensates for lost punch
-const photoFilter = "saturate(0.82) sepia(0.07) contrast(1.03)";
+type Category = {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  pdf?: string;
+};
 
-const categories = [
+const categories: Category[] = [
   {
     id: "moveis",
     label: "01",
@@ -16,6 +23,7 @@ const categories = [
       "Mesas executivas, estações de trabalho, armários, arquivos e divisórias. Soluções para todos os ambientes corporativos, desde recepções até salas de reunião de alto padrão.",
     image: moveisImg,
     tags: ["Executivo", "Reuniões", "Recepção", "Open Space"],
+    pdf: moveisMadeiraPdf,
   },
   {
     id: "cadeiras",
@@ -47,275 +55,129 @@ const categories = [
   },
 ];
 
+function cardLinkProps(cat: Category) {
+  if (cat.pdf) {
+    return {
+      href: cat.pdf,
+      target: "_blank" as const,
+      rel: "noopener noreferrer",
+      "aria-label": `Abrir catálogo: ${cat.title} (PDF, nova aba)`,
+    };
+  }
+  return { href: "#contato", "aria-label": `Solicitar orçamento: ${cat.title}` };
+}
+
 export function Especialidades() {
   const [featured, ...others] = categories;
 
   return (
-    <section id="produtos" style={{ backgroundColor: "var(--surface-default)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
-
+    <section id="produtos" className="bg-surface section-y">
+      <div className="container-page">
         {/* Section header */}
-        <div style={{ marginBottom: 56 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 10, height: 2, backgroundColor: "var(--accent-eyebrow)" }} />
-            <span
-              style={{
-                color: "var(--accent-eyebrow)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-              }}
-            >
-              Nossas Especialidades
-            </span>
+        <div className="mb-14">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-2.5 h-0.5 bg-eyebrow" />
+            <span className="eyebrow-text">Nossas Especialidades</span>
           </div>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 32, flexWrap: "wrap" }}>
-            <h2
-              style={{
-                fontFamily: "Manrope, sans-serif",
-                fontSize: 38,
-                fontWeight: 300,
-                lineHeight: 1.2,
-                color: "var(--text-primary)",
-                letterSpacing: "-0.02em",
-                margin: 0,
-              }}
-            >
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8">
+            <h2 className="text-ink text-[28px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] m-0">
               Soluções Completas para{" "}
-              <strong style={{ fontWeight: 700 }}>seu Ambiente Corporativo</strong>
+              <strong className="font-bold">seu Ambiente Corporativo</strong>
             </h2>
-            <p
-              style={{
-                color: "var(--text-primary)",
-                fontSize: 15,
-                lineHeight: 1.7,
-                fontFamily: "Manrope, sans-serif",
-                maxWidth: 320,
-                opacity: 0.65,
-                margin: 0,
-              }}
-            >
+            <p className="text-ink text-[15px] leading-[1.7] opacity-65 max-w-[320px] m-0">
               Do essencial ao especializado — tudo para equipar e transformar seu escritório.
             </p>
           </div>
         </div>
 
-        {/* Asymmetric grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(3, 200px)", gap: 3 }}>
+        {/* Asymmetric grid: 1-col mobile, 2-col lg (featured spans 3 rows on left) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[repeat(3,200px)] gap-[3px]">
 
-          {/* ── FEATURED CARD: photo top, solid navy panel bottom ── */}
-          <div
-            style={{
-              gridRow: "span 3",
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden",
-            }}
+          {/* ── FEATURED CARD: photo top, solid bordeaux panel bottom ── */}
+          <a
+            {...cardLinkProps(featured)}
+            className="group flex flex-col overflow-hidden lg:row-span-3 no-underline cursor-pointer"
           >
-            {/* Photo — full color, graded, fills remaining height */}
-            <div style={{ flex: 1, overflow: "hidden", minHeight: 0 }}>
+            {/* Photo — fills remaining height on lg+, fixed aspect on mobile */}
+            <div className="flex-1 overflow-hidden min-h-0 aspect-[16/10] lg:aspect-auto">
               <img
                 src={featured.image}
                 alt={featured.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  display: "block",
-                  filter: photoFilter,
-                }}
+                className="w-full h-full object-cover object-center block photo-graded transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
 
             {/* Solid bordeaux text panel */}
-            <div
-              style={{
-                backgroundColor: "var(--surface-anchor)",
-                padding: "32px 36px",
-                flexShrink: 0,
-              }}
-            >
-              {/* Eyebrow */}
-              <span
-                style={{
-                  display: "block",
-                  color: "var(--text-on-brand-secondary)",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  fontFamily: "Manrope, sans-serif",
-                  marginBottom: 14,
-                }}
-              >
+            <div className="bg-anchor px-8 py-7 lg:px-9 lg:py-8 shrink-0 transition-colors duration-200 group-hover:bg-brand-hover">
+              <span className="block text-on-brand-soft text-[11px] font-bold tracking-[0.2em] uppercase mb-3.5">
                 {featured.label} — Destaque
               </span>
 
-              {/* Tag chips */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16 }}>
+              <div className="flex flex-wrap gap-1.5 mb-4">
                 {featured.tags.map((tag) => (
                   <span
                     key={tag}
-                    style={{
-                      color: "var(--text-on-brand)",
-                      fontSize: 11,
-                      border: "1px solid var(--border-on-brand)",
-                      padding: "3px 10px",
-                      fontFamily: "Manrope, sans-serif",
-                      letterSpacing: "0.06em",
-                    }}
+                    className="text-on-brand text-[11px] border border-line-on-brand px-2.5 py-[3px] tracking-[0.06em]"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Title */}
-              <h3
-                style={{
-                  color: "var(--text-on-brand)",
-                  fontSize: 24,
-                  fontWeight: 700,
-                  fontFamily: "Manrope, sans-serif",
-                  lineHeight: 1.2,
-                  marginBottom: 10,
-                }}
-              >
+              <h3 className="text-on-brand text-2xl font-bold leading-tight mb-2.5">
                 {featured.title}
               </h3>
 
-              {/* Description */}
-              <p
-                style={{
-                  color: "var(--text-on-brand-secondary)",
-                  fontSize: 14,
-                  lineHeight: 1.65,
-                  fontFamily: "Manrope, sans-serif",
-                  marginBottom: 20,
-                }}
-              >
+              <p className="text-on-brand-soft text-sm leading-[1.65] mb-5">
                 {featured.description}
               </p>
 
-              {/* Link */}
-              <a
-                href="#contato"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 6,
-                  color: "var(--text-on-brand)",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  fontFamily: "Manrope, sans-serif",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                }}
-              >
-                Solicitar Orçamento <ArrowRight size={13} />
-              </a>
+              <span className="inline-flex items-center gap-1.5 text-on-brand text-[13px] font-bold tracking-[0.08em] uppercase">
+                {featured.pdf ? (
+                  <>Ver Catálogo <ArrowUpRight size={13} /></>
+                ) : (
+                  <>Solicitar Orçamento <ArrowRight size={13} /></>
+                )}
+              </span>
             </div>
-          </div>
+          </a>
 
-          {/* ── 3 SECONDARY CARDS: bone/white, text left, photo right ── */}
-          {others.map((cat, i) => (
-            <div
+          {/* ── 3 SECONDARY CARDS: text on top + photo bottom (mobile) / text left + photo right (sm+) ── */}
+          {others.map((cat) => (
+            <a
               key={cat.id}
-              style={{
-                backgroundColor: "var(--surface-elevated)",
-                border: "0.5px solid var(--border-subtle)",
-                display: "flex",
-                alignItems: "stretch",
-                overflow: "hidden",
-              }}
+              {...cardLinkProps(cat)}
+              className="group bg-elevated border-[0.5px] border-line flex flex-col sm:flex-row sm:items-stretch overflow-hidden no-underline cursor-pointer transition-colors duration-200 hover:border-brand"
             >
               {/* Text area */}
-              <div
-                style={{
-                  flex: 1,
-                  padding: "28px 32px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  gap: 8,
-                }}
-              >
-                <span
-                  style={{
-                    color: "var(--accent-eyebrow)",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                    fontFamily: "Manrope, sans-serif",
-                  }}
-                >
+              <div className="flex-1 p-7 sm:px-8 sm:py-7 flex flex-col justify-center gap-2">
+                <span className="text-eyebrow text-[11px] font-bold tracking-[0.2em] uppercase">
                   {cat.label}
                 </span>
-                <h3
-                  style={{
-                    color: "var(--text-primary)",
-                    fontSize: 17,
-                    fontWeight: 700,
-                    fontFamily: "Manrope, sans-serif",
-                    lineHeight: 1.2,
-                    margin: 0,
-                  }}
-                >
+                <h3 className="text-ink text-[17px] font-bold leading-tight m-0">
                   {cat.title}
                 </h3>
-                <p
-                  style={{
-                    color: "var(--text-primary)",
-                    fontSize: 13,
-                    lineHeight: 1.65,
-                    fontFamily: "Manrope, sans-serif",
-                    opacity: 0.65,
-                    margin: 0,
-                  }}
-                >
+                <p className="text-ink text-[13px] leading-[1.65] opacity-65 m-0">
                   {cat.description}
                 </p>
-                <a
-                  href="#contato"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                    color: "var(--brand-primary)",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    fontFamily: "Manrope, sans-serif",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    textDecoration: "none",
-                    marginTop: 4,
-                  }}
-                >
-                  Ver mais <ArrowRight size={12} />
-                </a>
+                <span className="inline-flex items-center gap-1.5 text-brand text-xs font-bold tracking-[0.08em] uppercase mt-1">
+                  {cat.pdf ? (
+                    <>Ver Catálogo <ArrowUpRight size={12} /></>
+                  ) : (
+                    <>Ver mais <ArrowRight size={12} /></>
+                  )}
+                </span>
               </div>
 
-              {/* Photo thumbnail — graded, full color */}
-              <div style={{ width: "38%", flexShrink: 0, overflow: "hidden" }}>
+              {/* Photo thumbnail */}
+              <div className="w-full aspect-[16/9] sm:aspect-auto sm:w-[38%] shrink-0 overflow-hidden order-first sm:order-last">
                 <img
                   src={cat.image}
                   alt={cat.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    display: "block",
-                    filter: photoFilter,
-                  }}
+                  className="w-full h-full object-cover object-center block photo-graded transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

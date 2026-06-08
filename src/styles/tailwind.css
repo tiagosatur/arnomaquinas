@@ -2,3 +2,49 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+/* ────────────────────────────────────────────────────────────
+   Tailwind v4 @theme — semantic tokens exposed as utilities
+   ------------------------------------------------------------
+   Tailwind v4 só reconhece @theme no MESMO arquivo que tem
+   `@import 'tailwindcss'`. Por isso fica aqui, não em brand.css.
+   Os valores referenciam `--*` vars definidas em brand.css.
+   ──────────────────────────────────────────────────────────── */
+@theme {
+  /* Brand */
+  --color-brand:           var(--brand-primary);
+  --color-brand-hover:     var(--brand-primary-hover);
+
+  /* Surfaces (use como bg-*) */
+  --color-surface:         var(--surface-default);
+  --color-elevated:        var(--surface-elevated);
+  --color-muted:           var(--surface-muted);
+  --color-anchor:          var(--surface-anchor);
+  --color-anchor-deep:     var(--surface-anchor-deep);
+
+  /* Texto sobre creme/light (use como text-*) */
+  --color-ink:             var(--text-primary);
+  --color-ink-soft:        var(--text-secondary);
+  --color-ink-muted:       var(--text-muted);
+  --color-ink-tertiary:    var(--text-tertiary);
+
+  /* Texto sobre bordô/dark */
+  --color-on-brand:        var(--text-on-brand);
+  --color-on-brand-soft:   var(--text-on-brand-secondary);
+  --color-on-brand-faint:  var(--text-on-brand-tertiary);
+
+  /* Accents (eyebrow e destaque, ambos bordô) */
+  --color-eyebrow:         var(--accent-eyebrow);
+  --color-highlight:       var(--accent-highlight);
+
+  /* Borders — namespace `line` evita conflito com bg/text intents */
+  --color-line:                  var(--border-subtle);
+  --color-line-on-brand:         var(--border-on-brand);
+  --color-line-on-brand-soft:    var(--border-on-brand-subtle);
+  --color-line-on-brand-faint:   var(--border-on-brand-faint);
+  --color-line-brand-soft:       var(--border-brand-subtle);
+  --color-line-brand-faint:      var(--border-brand-faint);
+
+  /* Font: Manrope vira `font-sans` default em todo o site */
+  --font-sans: var(--font-display);
+}

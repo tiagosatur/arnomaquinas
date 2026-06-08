@@ -1,0 +1,47 @@
+/* ============================================================
+   ArnoMáquinas — Globals
+   ------------------------------------------------------------
+   Body defaults (sem precisar repetir fontFamily/color em 100+ lugares)
+   + Tailwind v4 @utility shortcuts pros padrões repetidos 4+ vezes:
+     - container-page : max-width + gutter responsivo
+     - section-y      : ritmo vertical responsivo entre seções
+     - eyebrow-text   : "Nossas Especialidades" / "Por que a Arnomáquinas?"
+   ============================================================ */
+
+@layer base {
+  body {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    background-color: var(--surface-default);
+    overflow-x: hidden; /* defense vs hardcoded widths overflowing mobile during refactor */
+  }
+}
+
+/* Padrão "max-width 1440 + padding lateral fluido + centralizado".
+   Usado em 8 seções. Edite aqui pra mudar o grid de todas. */
+@utility container-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+/* Ritmo vertical responsivo entre seções (56→96px conforme largura). */
+@utility section-y {
+  padding-block: var(--section-y);
+}
+
+/* Eyebrow label: "Nossas Especialidades", "Por que a Arnomáquinas?" etc.
+   Usado em 5+ headings. */
+@utility eyebrow-text {
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-eyebrow);
+}
+
+/* Photo color grade — warm neutral, aplicado em todas as fotos do site.
+   -18% saturação, leve cast quente, +3% contraste pra compensar. */
+@utility photo-graded {
+  filter: saturate(0.82) sepia(0.07) contrast(1.03);
+}

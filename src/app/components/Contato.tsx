@@ -11,6 +11,16 @@ function WhatsAppIcon({ size = 14 }: { size?: number }) {
   );
 }
 
+const INPUT_BASE =
+  "w-full bg-muted text-ink placeholder:text-ink-muted " +
+  "px-4 py-3 text-sm outline-none rounded-sm box-border transition-colors";
+const INPUT_BORDER = "border";
+const INPUT_OK = `${INPUT_BORDER} border-line`;
+const INPUT_ERR = `${INPUT_BORDER} border-brand`;
+const LABEL_CLS =
+  "block text-ink-soft text-[11px] font-semibold tracking-[0.15em] uppercase mb-2";
+const ERR_CLS = "text-brand text-[11px] mt-1";
+
 export function Contato() {
   const [form, setForm] = useState({
     nome: "",
@@ -62,231 +72,130 @@ export function Contato() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    backgroundColor: "var(--tint-on-brand-weak)",
-    border: "1px solid var(--border-on-brand-subtle)",
-    color: "var(--text-on-brand)",
-    padding: "12px 16px",
-    fontSize: 14,
-    fontFamily: "Manrope, sans-serif",
-    outline: "none",
-    borderRadius: 2,
-    boxSizing: "border-box",
-    transition: "border-color 0.2s",
-  };
-
-  const inputErrorStyle: React.CSSProperties = {
-    ...inputStyle,
-    border: "1px solid var(--color-bordeaux-300)",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    color: "var(--text-on-brand-secondary)",
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: "0.15em",
-    textTransform: "uppercase",
-    fontFamily: "Manrope, sans-serif",
-    marginBottom: 8,
-  };
-
   return (
-    <section id="contato" style={{ backgroundColor: "var(--surface-anchor)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
+    <section id="contato" className="bg-elevated section-y">
+      <div className="container-page">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
-            <span
-              style={{
-                color: "var(--text-on-brand-secondary)",
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-              }}
-            >
-              Fale com a Arnomáquinas
-            </span>
-            <div style={{ width: 32, height: 1, backgroundColor: "var(--text-on-brand-secondary)" }} />
+        <div className="text-center mb-14 lg:mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-eyebrow" />
+            <span className="eyebrow-text">Fale com a Arnomáquinas</span>
+            <div className="w-8 h-px bg-eyebrow" />
           </div>
-          <h2
-            style={{
-              color: "var(--text-on-brand)",
-              fontFamily: "Manrope, sans-serif",
-              fontSize: 38,
-              fontWeight: 300,
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="text-ink text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] m-0">
             Solicite seu Orçamento{" "}
-            <strong style={{ fontWeight: 700 }}>sem compromisso</strong>
+            <strong className="font-bold">sem compromisso</strong>
           </h2>
-          <p
-            style={{
-              color: "var(--text-on-brand-secondary)",
-              fontSize: 16,
-              fontFamily: "Manrope, sans-serif",
-              marginTop: 12,
-            }}
-          >
+          <p className="text-ink-soft text-base mt-3">
             Nossa equipe retorna em até 24 horas com uma proposta personalizada.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 48, alignItems: "start" }}>
+        {/* 1-col mobile, form + sidebar on lg+ */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 lg:gap-12 items-start">
           {/* Form */}
           <form onSubmit={handleSubmit} noValidate>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label style={labelStyle}>Nome Completo *</label>
+                <label className={LABEL_CLS}>Nome Completo *</label>
                 <input
                   type="text"
                   name="nome"
                   value={form.nome}
                   onChange={handleChange}
                   placeholder="Seu nome"
-                  style={errors.nome ? inputErrorStyle : inputStyle}
+                  className={`${INPUT_BASE} ${errors.nome ? INPUT_ERR : INPUT_OK}`}
                 />
-                {errors.nome && (
-                  <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
-                    Campo obrigatório
-                  </p>
-                )}
+                {errors.nome && <p className={ERR_CLS}>Campo obrigatório</p>}
               </div>
               <div>
-                <label style={labelStyle}>Empresa</label>
+                <label className={LABEL_CLS}>Empresa</label>
                 <input
                   type="text"
                   name="empresa"
                   value={form.empresa}
                   onChange={handleChange}
                   placeholder="Nome da empresa"
-                  style={inputStyle}
+                  className={`${INPUT_BASE} ${INPUT_OK}`}
                 />
               </div>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label style={labelStyle}>E-mail {!form.telefone && "*"}</label>
+                <label className={LABEL_CLS}>E-mail {!form.telefone && "*"}</label>
                 <input
                   type="email"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
                   placeholder="seu@email.com"
-                  style={errors.contact ? inputErrorStyle : inputStyle}
+                  className={`${INPUT_BASE} ${errors.contact ? INPUT_ERR : INPUT_OK}`}
                 />
               </div>
               <div>
-                <label style={labelStyle}>Telefone {!form.email && "*"}</label>
+                <label className={LABEL_CLS}>Telefone {!form.email && "*"}</label>
                 <input
                   type="tel"
                   name="telefone"
                   value={form.telefone}
                   onChange={handleChange}
                   placeholder="(55) 98454-9195"
-                  style={errors.contact ? inputErrorStyle : inputStyle}
+                  className={`${INPUT_BASE} ${errors.contact ? INPUT_ERR : INPUT_OK}`}
                 />
-                {errors.contact && (
-                  <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
-                    Informe e-mail ou telefone
-                  </p>
-                )}
+                {errors.contact && <p className={ERR_CLS}>Informe e-mail ou telefone</p>}
               </div>
             </div>
 
-            <div style={{ marginBottom: 16 }}>
-              <label style={labelStyle}>Interesse Principal *</label>
+            <div className="mb-4">
+              <label className={LABEL_CLS}>Interesse Principal *</label>
               <select
                 name="interesse"
                 value={form.interesse}
                 onChange={handleChange}
-                style={{
-                  ...(errors.interesse ? inputErrorStyle : inputStyle),
-                  color: form.interesse === "" ? "var(--text-on-brand-secondary)" : "var(--text-on-brand)",
-                }}
+                className={`${INPUT_BASE} ${errors.interesse ? INPUT_ERR : INPUT_OK} ${
+                  form.interesse === "" ? "text-ink-soft" : "text-ink"
+                }`}
               >
-                <option value="" style={{ background: "var(--surface-anchor)" }}>Selecione uma categoria</option>
-                <option value="moveis" style={{ background: "var(--surface-anchor)" }}>Móveis de Escritório</option>
-                <option value="cadeiras" style={{ background: "var(--surface-anchor)" }}>Cadeiras e Poltronas</option>
-                <option value="equipamentos" style={{ background: "var(--surface-anchor)" }}>Equipamentos</option>
-                <option value="expediente" style={{ background: "var(--surface-anchor)" }}>Material de Expediente</option>
-                <option value="assistencia" style={{ background: "var(--surface-anchor)" }}>Assistência Técnica</option>
-                <option value="outro" style={{ background: "var(--surface-anchor)" }}>Outro</option>
+                <option value="" className="bg-elevated">Selecione uma categoria</option>
+                <option value="moveis" className="bg-elevated">Móveis de Escritório</option>
+                <option value="cadeiras" className="bg-elevated">Cadeiras e Poltronas</option>
+                <option value="equipamentos" className="bg-elevated">Equipamentos</option>
+                <option value="expediente" className="bg-elevated">Material de Expediente</option>
+                <option value="assistencia" className="bg-elevated">Assistência Técnica</option>
+                <option value="outro" className="bg-elevated">Outro</option>
               </select>
-              {errors.interesse && (
-                <p style={{ color: "var(--color-bordeaux-300)", fontSize: 11, fontFamily: "Manrope, sans-serif", marginTop: 4 }}>
-                  Selecione uma categoria
-                </p>
-              )}
+              {errors.interesse && <p className={ERR_CLS}>Selecione uma categoria</p>}
             </div>
 
-            <div style={{ marginBottom: 28 }}>
-              <label style={labelStyle}>Mensagem</label>
+            <div className="mb-7">
+              <label className={LABEL_CLS}>Mensagem</label>
               <textarea
                 name="mensagem"
                 value={form.mensagem}
                 onChange={handleChange}
                 rows={4}
                 placeholder="Descreva sua necessidade ou faça perguntas..."
-                style={{ ...inputStyle, resize: "none" }}
+                className={`${INPUT_BASE} ${INPUT_OK} resize-none`}
               />
             </div>
 
             <button
               type="submit"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                backgroundColor: "var(--text-on-brand)",
-                color: "var(--brand-primary)",
-                padding: "14px 36px",
-                fontSize: 14,
-                fontWeight: 700,
-                fontFamily: "Manrope, sans-serif",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                border: "none",
-                borderRadius: 2,
-                cursor: "pointer",
-                transition: "background-color 0.2s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--surface-hover)")}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--text-on-brand)")}
+              className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto bg-brand text-on-brand px-9 py-3.5 text-sm font-bold uppercase tracking-[0.08em] border-0 rounded-sm cursor-pointer transition-colors duration-200 hover:bg-brand-hover"
             >
               <WhatsAppIcon size={16} />
               Enviar pelo WhatsApp
             </button>
           </form>
 
-          {/* Sidebar — contact info only */}
+          {/* Sidebar — contact info */}
           <div>
-            <div
-              style={{
-                backgroundColor: "var(--tint-on-brand-weak)",
-                border: "1px solid var(--border-on-brand-subtle)",
-                padding: 32,
-              }}
-            >
-              <h4
-                style={{
-                  color: "var(--text-on-brand)",
-                  fontSize: 15,
-                  fontWeight: 700,
-                  fontFamily: "Manrope, sans-serif",
-                  marginBottom: 24,
-                }}
-              >
+            <div className="bg-muted border border-line p-8">
+              <h4 className="text-ink text-[15px] font-bold mb-6 m-0">
                 Informações de Contato
               </h4>
-              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div className="flex flex-col gap-5">
                 {[
                   { icon: MapPin, label: "Endereço", value: "Av. Getúlio Vargas, 318\nSol Nascente, Ijuí — RS\n98700-000", href: "https://maps.app.goo.gl/2yGupUFwSHHFcsJJ6" },
                   { icon: Phone, label: "Telefone", value: "(55) 98454-9195" },
@@ -294,41 +203,13 @@ export function Contato() {
                   { icon: Clock, label: "Horário", value: "Seg–Sex: 8h às 18h\nSáb: 8h às 13h" },
                 ].map((info) => {
                   const Icon = info.icon;
-                  const textStyle: React.CSSProperties = {
-                    color: "var(--text-on-brand-secondary)",
-                    fontSize: 14,
-                    fontFamily: "Manrope, sans-serif",
-                    lineHeight: 1.6,
-                    whiteSpace: "pre-line",
-                  };
                   return (
-                    <div key={info.label} style={{ display: "flex", gap: 16 }}>
-                      <div
-                        style={{
-                          width: 32,
-                          height: 32,
-                          backgroundColor: "var(--tint-on-brand-medium)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                          marginTop: 2,
-                        }}
-                      >
-                        <Icon size={13} color="var(--text-on-brand)" />
+                    <div key={info.label} className="flex gap-4">
+                      <div className="w-8 h-8 bg-surface flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon size={13} color="var(--brand-primary)" />
                       </div>
                       <div>
-                        <p
-                          style={{
-                            color: "var(--text-on-brand-secondary)",
-                            fontSize: 11,
-                            fontWeight: 600,
-                            letterSpacing: "0.12em",
-                            textTransform: "uppercase",
-                            fontFamily: "Manrope, sans-serif",
-                            marginBottom: 4,
-                          }}
-                        >
+                        <p className="text-eyebrow text-[11px] font-semibold tracking-[0.12em] uppercase mb-1 m-0">
                           {info.label}
                         </p>
                         {"href" in info ? (
@@ -336,14 +217,12 @@ export function Contato() {
                             href={info.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ ...textStyle, textDecoration: "underline", textUnderlineOffset: 3 }}
-                            onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
-                            onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
+                            className="text-ink-soft text-sm leading-[1.6] whitespace-pre-line underline underline-offset-[3px] hover:text-brand transition-colors"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p style={textStyle}>{info.value}</p>
+                          <p className="text-ink-soft text-sm leading-[1.6] whitespace-pre-line m-0">{info.value}</p>
                         )}
                       </div>
                     </div>

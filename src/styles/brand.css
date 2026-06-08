@@ -38,6 +38,19 @@
   --color-black: #000000;
 
 
+  /* ─── 1b. TYPE / LAYOUT primitives ─── */
+
+  --font-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+
+  --container-max:    1440px;
+  --container-gutter: clamp(20px, 5vw, 48px);   /* mobile→desktop fluid */
+  --section-y:        clamp(56px, 10vw, 96px);  /* mobile→desktop fluid */
+
+  /* Breakpoints (mirrors Tailwind v4 defaults; for raw CSS media queries) */
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+
   /* ─── 2. SEMÂNTICOS (intent) ─── */
 
   /* Brand */
@@ -46,11 +59,12 @@
   --brand-primary-pressed: var(--color-bordeaux-700);
 
   /* Surfaces */
-  --surface-default:  var(--color-cream-100);
-  --surface-elevated: var(--color-white);
-  --surface-anchor:   var(--color-bordeaux-500);
-  --surface-muted:    var(--color-cream-50);
-  --surface-hover:    var(--color-cream-200);
+  --surface-default:     var(--color-cream-100);
+  --surface-elevated:    var(--color-white);
+  --surface-anchor:      var(--color-bordeaux-500);
+  --surface-anchor-deep: var(--color-bordeaux-700);  /* form section, more rest/serious */
+  --surface-muted:       var(--color-cream-50);
+  --surface-hover:       var(--color-cream-200);
 
   /* Text on cream/light */
   --text-primary:   var(--color-charcoal-900);
@@ -85,13 +99,8 @@
   --shadow-header: 0 1px 12px rgba(80, 9, 21, 0.10);
 }
 
-/* ─── 3. Tailwind utilities mapping ─── */
-@theme {
-  --color-brand:        var(--brand-primary);
-  --color-brand-hover:  var(--brand-primary-hover);
-  --color-surface:      var(--surface-default);
-  --color-anchor:       var(--surface-anchor);
-  --color-ink:          var(--text-primary);
-  --color-ink-soft:     var(--text-secondary);
-  --color-on-brand:     var(--text-on-brand);
-}
+/* ─── 3. Tailwind utilities mapping ───
+   O @theme block está em tailwind.css (mesma file que `@import 'tailwindcss'`,
+   exigência do Tailwind v4). Ver lá pra ver as utilities expostas
+   (bg-surface, text-ink, border-line-* etc).
+*/
