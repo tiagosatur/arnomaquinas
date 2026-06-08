@@ -12,14 +12,14 @@ function WhatsAppIcon({ size = 14 }: { size?: number }) {
 }
 
 const INPUT_BASE =
-  "w-full bg-[var(--tint-on-brand-weak)] text-on-brand placeholder:text-on-brand-soft " +
+  "w-full bg-muted text-ink placeholder:text-ink-muted " +
   "px-4 py-3 text-sm outline-none rounded-sm box-border transition-colors";
 const INPUT_BORDER = "border";
-const INPUT_OK = `${INPUT_BORDER} border-line-on-brand-soft`;
-const INPUT_ERR = `${INPUT_BORDER} border-[var(--color-bordeaux-300)]`;
+const INPUT_OK = `${INPUT_BORDER} border-line`;
+const INPUT_ERR = `${INPUT_BORDER} border-brand`;
 const LABEL_CLS =
-  "block text-on-brand-soft text-[11px] font-semibold tracking-[0.15em] uppercase mb-2";
-const ERR_CLS = "text-[var(--color-bordeaux-300)] text-[11px] mt-1";
+  "block text-ink-soft text-[11px] font-semibold tracking-[0.15em] uppercase mb-2";
+const ERR_CLS = "text-brand text-[11px] mt-1";
 
 export function Contato() {
   const [form, setForm] = useState({
@@ -73,22 +73,20 @@ export function Contato() {
   };
 
   return (
-    <section id="contato" className="bg-anchor-deep section-y">
+    <section id="contato" className="bg-elevated section-y">
       <div className="container-page">
         {/* Header */}
         <div className="text-center mb-14 lg:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-px bg-on-brand-soft" />
-            <span className="text-on-brand-soft text-[13px] font-semibold tracking-[0.15em] uppercase">
-              Fale com a Arnomáquinas
-            </span>
-            <div className="w-8 h-px bg-on-brand-soft" />
+            <div className="w-8 h-px bg-eyebrow" />
+            <span className="eyebrow-text">Fale com a Arnomáquinas</span>
+            <div className="w-8 h-px bg-eyebrow" />
           </div>
-          <h2 className="text-on-brand text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] m-0">
+          <h2 className="text-ink text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] m-0">
             Solicite seu Orçamento{" "}
             <strong className="font-bold">sem compromisso</strong>
           </h2>
-          <p className="text-on-brand-soft text-base mt-3">
+          <p className="text-ink-soft text-base mt-3">
             Nossa equipe retorna em até 24 horas com uma proposta personalizada.
           </p>
         </div>
@@ -156,16 +154,16 @@ export function Contato() {
                 value={form.interesse}
                 onChange={handleChange}
                 className={`${INPUT_BASE} ${errors.interesse ? INPUT_ERR : INPUT_OK} ${
-                  form.interesse === "" ? "text-on-brand-soft" : "text-on-brand"
+                  form.interesse === "" ? "text-ink-soft" : "text-ink"
                 }`}
               >
-                <option value="" className="bg-anchor-deep">Selecione uma categoria</option>
-                <option value="moveis" className="bg-anchor-deep">Móveis de Escritório</option>
-                <option value="cadeiras" className="bg-anchor-deep">Cadeiras e Poltronas</option>
-                <option value="equipamentos" className="bg-anchor-deep">Equipamentos</option>
-                <option value="expediente" className="bg-anchor-deep">Material de Expediente</option>
-                <option value="assistencia" className="bg-anchor-deep">Assistência Técnica</option>
-                <option value="outro" className="bg-anchor-deep">Outro</option>
+                <option value="" className="bg-elevated">Selecione uma categoria</option>
+                <option value="moveis" className="bg-elevated">Móveis de Escritório</option>
+                <option value="cadeiras" className="bg-elevated">Cadeiras e Poltronas</option>
+                <option value="equipamentos" className="bg-elevated">Equipamentos</option>
+                <option value="expediente" className="bg-elevated">Material de Expediente</option>
+                <option value="assistencia" className="bg-elevated">Assistência Técnica</option>
+                <option value="outro" className="bg-elevated">Outro</option>
               </select>
               {errors.interesse && <p className={ERR_CLS}>Selecione uma categoria</p>}
             </div>
@@ -184,7 +182,7 @@ export function Contato() {
 
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto bg-on-brand text-brand px-9 py-3.5 text-sm font-bold uppercase tracking-[0.08em] border-0 rounded-sm cursor-pointer transition-colors duration-200 hover:bg-[var(--surface-hover)]"
+              className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto bg-brand text-on-brand px-9 py-3.5 text-sm font-bold uppercase tracking-[0.08em] border-0 rounded-sm cursor-pointer transition-colors duration-200 hover:bg-brand-hover"
             >
               <WhatsAppIcon size={16} />
               Enviar pelo WhatsApp
@@ -193,8 +191,8 @@ export function Contato() {
 
           {/* Sidebar — contact info */}
           <div>
-            <div className="bg-[var(--tint-on-brand-weak)] border border-line-on-brand-soft p-8">
-              <h4 className="text-on-brand text-[15px] font-bold mb-6 m-0">
+            <div className="bg-muted border border-line p-8">
+              <h4 className="text-ink text-[15px] font-bold mb-6 m-0">
                 Informações de Contato
               </h4>
               <div className="flex flex-col gap-5">
@@ -207,11 +205,11 @@ export function Contato() {
                   const Icon = info.icon;
                   return (
                     <div key={info.label} className="flex gap-4">
-                      <div className="w-8 h-8 bg-[var(--tint-on-brand-medium)] flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon size={13} color="var(--text-on-brand)" />
+                      <div className="w-8 h-8 bg-surface flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon size={13} color="var(--brand-primary)" />
                       </div>
                       <div>
-                        <p className="text-on-brand-soft text-[11px] font-semibold tracking-[0.12em] uppercase mb-1 m-0">
+                        <p className="text-eyebrow text-[11px] font-semibold tracking-[0.12em] uppercase mb-1 m-0">
                           {info.label}
                         </p>
                         {"href" in info ? (
@@ -219,12 +217,12 @@ export function Contato() {
                             href={info.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-on-brand-soft text-sm leading-[1.6] whitespace-pre-line underline underline-offset-[3px] hover:text-on-brand transition-colors"
+                            className="text-ink-soft text-sm leading-[1.6] whitespace-pre-line underline underline-offset-[3px] hover:text-brand transition-colors"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-on-brand-soft text-sm leading-[1.6] whitespace-pre-line m-0">{info.value}</p>
+                          <p className="text-ink-soft text-sm leading-[1.6] whitespace-pre-line m-0">{info.value}</p>
                         )}
                       </div>
                     </div>
