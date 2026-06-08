@@ -34,114 +34,44 @@ const diferenciais = [
 
 export function Diferenciais() {
   return (
-    <section id="sobre" style={{ backgroundColor: "var(--surface-elevated)", padding: "96px 0", overflow: "hidden" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 48px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-          {/* Left: image */}
-          <div style={{ position: "relative" }}>
-            <div
-              style={{
-                position: "absolute",
-                top: -24,
-                left: -24,
-                width: "60%",
-                height: "60%",
-                backgroundColor: "var(--surface-default)",
-                zIndex: 0,
-              }}
-            />
-            <div style={{ position: "relative", zIndex: 1 }}>
+    <section id="sobre" className="bg-elevated section-y overflow-hidden">
+      <div className="container-page">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: image with cream rect behind + bordeaux badge front */}
+          <div className="relative">
+            {/* Cream rectangle behind (top-left offset) */}
+            <div className="absolute -top-6 -left-6 w-[60%] h-[60%] bg-surface z-0" />
+
+            <div className="relative z-10">
               <img
                 src={familiaImg}
                 alt="Fotografia histórica de escritório, início do século XX"
-                style={{
-                  width: "100%",
-                  height: 480,
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  display: "block",
-                  filter: "grayscale(1) contrast(1.05)",
-                }}
+                className="block w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover object-center [filter:grayscale(1)_contrast(1.05)]"
               />
-              {/* Floating badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: -24,
-                  bottom: -24,
-                  backgroundColor: "var(--surface-anchor)",
-                  padding: "28px 36px",
-                  zIndex: 2,
-                }}
-              >
-                <p
-                  style={{
-                    color: "var(--text-on-brand)",
-                    fontSize: 52,
-                    fontWeight: 800,
-                    lineHeight: 1,
-                    fontFamily: "Manrope, sans-serif",
-                  }}
-                >
+
+              {/* Floating bordeaux "50 Anos" badge */}
+              <div className="absolute -right-4 -bottom-4 lg:-right-6 lg:-bottom-6 bg-anchor px-8 py-6 lg:px-9 lg:py-7 z-20">
+                <p className="text-on-brand text-[40px] lg:text-[52px] font-extrabold leading-none m-0">
                   50
                 </p>
-                <p
-                  style={{
-                    color: "var(--text-on-brand-secondary)",
-                    fontSize: 11,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    fontFamily: "Manrope, sans-serif",
-                    marginTop: 4,
-                    lineHeight: 1.5,
-                  }}
-                >
+                <p className="text-on-brand-soft text-[11px] tracking-[0.18em] uppercase mt-1 leading-[1.5] m-0">
                   Anos de<br />Excelência
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right: diferenciais list */}
+          {/* Right: differential list */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 10, height: 2, backgroundColor: "var(--accent-eyebrow)" }} />
-              <span
-                style={{
-                  color: "var(--accent-eyebrow)",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  fontFamily: "Manrope, sans-serif",
-                }}
-              >
-                Por que a Arnomáquinas?
-              </span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-2.5 h-0.5 bg-eyebrow" />
+              <span className="eyebrow-text">Por que a Arnomáquinas?</span>
             </div>
-            <h2
-              style={{
-                fontFamily: "Manrope, sans-serif",
-                fontSize: 38,
-                fontWeight: 300,
-                lineHeight: 1.15,
-                color: "var(--text-primary)",
-                letterSpacing: "-0.02em",
-                marginBottom: 16,
-              }}
-            >
+            <h2 className="text-ink text-[26px] sm:text-[32px] lg:text-[38px] font-light leading-tight tracking-[-0.02em] mb-4">
               Diferenciais que{" "}
-              <strong style={{ fontWeight: 700 }}>constroem relacionamentos</strong>
+              <strong className="font-bold">constroem relacionamentos</strong>
             </h2>
-            <p
-              style={{
-                color: "var(--text-secondary)",
-                fontSize: 15,
-                lineHeight: 1.7,
-                fontFamily: "Manrope, sans-serif",
-                marginBottom: 40,
-              }}
-            >
+            <p className="text-ink-soft text-[15px] leading-[1.7] mb-10">
               Nossa solidez não é apenas histórica — ela se manifesta em cada produto entregue,
               cada serviço prestado e cada cliente atendido.
             </p>
@@ -152,59 +82,21 @@ export function Diferenciais() {
                 return (
                   <div
                     key={item.title}
-                    style={{
-                      display: "flex",
-                      gap: 20,
-                      padding: "24px 0",
-                      borderBottom: "1px solid var(--border-subtle)",
-                    }}
+                    className="flex gap-5 py-6 border-b border-line"
                   >
-                    <div
-                      style={{
-                        flexShrink: 0,
-                        width: 44,
-                        height: 44,
-                        backgroundColor: "var(--surface-default)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <div className="shrink-0 w-11 h-11 bg-surface flex items-center justify-center">
                       <Icon size={18} color="var(--brand-primary)" />
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-                        <h4
-                          style={{
-                            color: "var(--text-primary)",
-                            fontSize: 15,
-                            fontWeight: 700,
-                            fontFamily: "Manrope, sans-serif",
-                          }}
-                        >
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+                        <h4 className="text-ink text-[15px] font-bold m-0">
                           {item.title}
                         </h4>
-                        <span
-                          style={{
-                            color: "var(--brand-primary)",
-                            fontSize: 11,
-                            fontWeight: 600,
-                            letterSpacing: "0.12em",
-                            textTransform: "uppercase",
-                            fontFamily: "Manrope, sans-serif",
-                          }}
-                        >
+                        <span className="text-brand text-[11px] font-semibold tracking-[0.12em] uppercase">
                           {item.detail}
                         </span>
                       </div>
-                      <p
-                        style={{
-                          color: "var(--text-secondary)",
-                          fontSize: 14,
-                          lineHeight: 1.7,
-                          fontFamily: "Manrope, sans-serif",
-                        }}
-                      >
+                      <p className="text-ink-soft text-sm leading-[1.7] m-0">
                         {item.description}
                       </p>
                     </div>
