@@ -7,55 +7,17 @@ const stats = [
 
 export function StatsStrip() {
   return (
-    <section
-      style={{
-        backgroundColor: "var(--surface-default)",
-        padding: "64px 48px",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 96,
-        }}
-      >
+    <section className="bg-surface py-16 px-[var(--container-gutter)]">
+      <div className="container-page grid grid-cols-2 gap-y-10 gap-x-6 sm:gap-x-12 lg:flex lg:items-center lg:justify-center lg:gap-24">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-            }}
+            className="flex flex-col items-center text-center"
           >
-            <span
-              style={{
-                color: "var(--brand-primary)",
-                fontSize: 36,
-                fontWeight: 700,
-                lineHeight: 1,
-                fontFamily: "Manrope, sans-serif",
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <span className="text-brand text-[28px] sm:text-[36px] font-bold leading-none tracking-[-0.02em]">
               {stat.number}
             </span>
-            <span
-              style={{
-                color: "var(--text-muted)",
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-                marginTop: 8,
-              }}
-            >
+            <span className="text-ink-muted text-[11px] sm:text-xs font-medium tracking-[0.12em] uppercase mt-2">
               {stat.label}
             </span>
           </div>
