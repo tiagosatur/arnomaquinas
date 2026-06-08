@@ -13,6 +13,7 @@
     font-family: var(--font-display);
     color: var(--text-primary);
     background-color: var(--surface-default);
+    overflow-x: hidden; /* defense vs hardcoded widths overflowing mobile during refactor */
   }
 }
 

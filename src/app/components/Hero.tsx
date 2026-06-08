@@ -5,133 +5,53 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      style={{
-        position: "relative",
-        width: "100%",
-        aspectRatio: "21 / 9",
-        minHeight: 560,
-        marginTop: 88,
-        overflow: "hidden",
-        backgroundColor: "var(--surface-default)",
-      }}
+      className="relative w-full mt-[88px] overflow-hidden bg-surface lg:aspect-[21/9] lg:min-h-[560px]"
     >
-      <img
-        src={heroImg}
-        alt="Sala de reunião executiva com cadeiras premium"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "right center",
-          display: "block",
-        }}
-      />
+      {/* Photo: 4:5 mobile, 16:9 tablet, fills section on lg+ */}
+      <div className="relative aspect-[4/5] sm:aspect-[16/9] lg:absolute lg:inset-0 lg:aspect-auto">
+        <img
+          src={heroImg}
+          alt="Sala de reunião executiva com cadeiras premium"
+          className="block w-full h-full object-cover object-center lg:object-right"
+        />
+      </div>
 
-      {/* Floating cream panel */}
+      {/* Cream panel: stacks below photo on mobile/tablet, floats on lg+ */}
       <div
-        style={{
-          position: "absolute",
-          left: 44,
-          top: 44,
-          bottom: 44,
-          width: "clamp(380px, 40vw, 560px)",
-          backgroundColor: "var(--surface-default)",
-          padding: 56,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          boxShadow: "var(--shadow-panel)",
-        }}
+        className="relative bg-surface p-6 sm:p-10 flex flex-col justify-center
+                   lg:absolute lg:left-11 lg:top-11 lg:bottom-11
+                   lg:w-[clamp(380px,40vw,560px)] lg:p-14
+                   lg:shadow-[var(--shadow-panel)]"
       >
         {/* Eyebrow */}
-        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 32 }}>
-          <div style={{ width: 40, height: 2, backgroundColor: "var(--accent-eyebrow)", flexShrink: 0 }} />
-          <span
-            style={{
-              color: "var(--accent-eyebrow)",
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              fontFamily: "Manrope, sans-serif",
-            }}
-          >
-            Desde 1975
-          </span>
+        <div className="flex items-center gap-[14px] mb-6 lg:mb-8">
+          <div className="w-10 h-0.5 bg-eyebrow shrink-0" />
+          <span className="eyebrow-text">Desde 1975</span>
         </div>
 
         {/* Headline */}
         <div>
-          <p
-            style={{
-              color: "var(--text-primary)",
-              fontSize: 40,
-              fontWeight: 400,
-              lineHeight: 1.12,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "-0.02em",
-              margin: 0,
-            }}
-          >
+          <p className="text-ink text-[26px] sm:text-[32px] lg:text-[40px] font-normal leading-[1.12] tracking-[-0.02em] m-0">
             Móveis e equipamentos para escritório
           </p>
-          <p
-            style={{
-              color: "var(--accent-highlight)",
-              fontSize: 40,
-              fontWeight: 700,
-              lineHeight: 1.12,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "-0.02em",
-              marginTop: 20,
-              marginBottom: 0,
-            }}
-          >
+          <p className="text-highlight text-[26px] sm:text-[32px] lg:text-[40px] font-bold leading-[1.12] tracking-[-0.02em] mt-4 lg:mt-5 mb-0">
             Venda. Montagem. Manutenção.
           </p>
         </div>
 
         {/* Subhead */}
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            fontSize: 16,
-            lineHeight: 1.6,
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 400,
-            marginTop: 24,
-            marginBottom: 0,
-            maxWidth: 520,
-          }}
-        >
+        <p className="text-ink-soft text-[15px] lg:text-base leading-[1.6] font-normal mt-5 lg:mt-6 mb-0 max-w-[520px]">
           Do móvel executivo ao equipamento especializado — soluções integradas
           para sua empresa crescer com excelência.
         </p>
 
         {/* CTA */}
-        <div style={{ marginTop: 32 }}>
+        <div className="mt-7 lg:mt-8">
           <a
             href="#produtos"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              backgroundColor: "var(--brand-primary)",
-              color: "var(--text-on-brand)",
-              padding: "13px 28px",
-              fontSize: 13,
-              fontWeight: 700,
-              fontFamily: "Manrope, sans-serif",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              borderRadius: 2,
-              transition: "background-color 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary-hover)")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "var(--brand-primary)")}
+            className="inline-flex items-center gap-2.5 rounded-sm bg-brand text-on-brand
+                       px-7 py-[13px] text-[13px] font-bold uppercase tracking-[0.08em] no-underline
+                       transition-colors duration-200 hover:bg-brand-hover"
           >
             <BookOpen size={15} />
             Conheça nosso Catálogo
