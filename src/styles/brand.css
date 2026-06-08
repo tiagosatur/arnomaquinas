@@ -38,6 +38,19 @@
   --color-black: #000000;
 
 
+  /* ─── 1b. TYPE / LAYOUT primitives ─── */
+
+  --font-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+
+  --container-max:    1440px;
+  --container-gutter: clamp(20px, 5vw, 48px);   /* mobile→desktop fluid */
+  --section-y:        clamp(56px, 10vw, 96px);  /* mobile→desktop fluid */
+
+  /* Breakpoints (mirrors Tailwind v4 defaults; for raw CSS media queries) */
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+
   /* ─── 2. SEMÂNTICOS (intent) ─── */
 
   /* Brand */
@@ -85,13 +98,47 @@
   --shadow-header: 0 1px 12px rgba(80, 9, 21, 0.10);
 }
 
-/* ─── 3. Tailwind utilities mapping ─── */
+/* ─── 3. Tailwind utilities mapping ───
+   Em Tailwind v4, qualquer var `--color-*` declarada dentro de @theme
+   vira utility automaticamente: `bg-X`, `text-X`, `border-X`, `ring-X`.
+   `--font-sans` substitui o sans default.
+   Sombras ficam fora do @theme (são usadas só 2x); use o arbitrary
+   `shadow-[var(--shadow-panel)]` nesses pontos.
+*/
 @theme {
-  --color-brand:        var(--brand-primary);
-  --color-brand-hover:  var(--brand-primary-hover);
-  --color-surface:      var(--surface-default);
-  --color-anchor:       var(--surface-anchor);
-  --color-ink:          var(--text-primary);
-  --color-ink-soft:     var(--text-secondary);
-  --color-on-brand:     var(--text-on-brand);
+  /* Brand */
+  --color-brand:           var(--brand-primary);
+  --color-brand-hover:     var(--brand-primary-hover);
+
+  /* Surfaces (use como bg-*) */
+  --color-surface:         var(--surface-default);
+  --color-elevated:        var(--surface-elevated);
+  --color-muted:           var(--surface-muted);
+  --color-anchor:          var(--surface-anchor);
+
+  /* Texto sobre creme/light (use como text-*) */
+  --color-ink:             var(--text-primary);
+  --color-ink-soft:        var(--text-secondary);
+  --color-ink-muted:       var(--text-muted);
+  --color-ink-tertiary:    var(--text-tertiary);
+
+  /* Texto sobre bordô/dark */
+  --color-on-brand:        var(--text-on-brand);
+  --color-on-brand-soft:   var(--text-on-brand-secondary);
+  --color-on-brand-faint:  var(--text-on-brand-tertiary);
+
+  /* Accents (eyebrow e destaque, ambos bordô) */
+  --color-eyebrow:         var(--accent-eyebrow);
+  --color-highlight:       var(--accent-highlight);
+
+  /* Borders — namespace `line` evita conflito com bg/text intents */
+  --color-line:                  var(--border-subtle);
+  --color-line-on-brand:         var(--border-on-brand);
+  --color-line-on-brand-soft:    var(--border-on-brand-subtle);
+  --color-line-on-brand-faint:   var(--border-on-brand-faint);
+  --color-line-brand-soft:       var(--border-brand-subtle);
+  --color-line-brand-faint:      var(--border-brand-faint);
+
+  /* Font: Manrope vira `font-sans` default em todo o site */
+  --font-sans: var(--font-display);
 }
