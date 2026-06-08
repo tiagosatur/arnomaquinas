@@ -1,9 +1,20 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import moveisImg from "../../imports/especialidades/moveis.png";
 import cadeirasImg from "../../imports/especialidades/cadeiras.png";
 import expedienteImg from "../../imports/especialidades/expediente.png";
+import moveisMadeiraPdf from "../../imports/catalogos/moveis-de-madeira.pdf";
 
-const categories = [
+type Category = {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  pdf?: string;
+};
+
+const categories: Category[] = [
   {
     id: "moveis",
     label: "01",
@@ -12,6 +23,7 @@ const categories = [
       "Mesas executivas, estações de trabalho, armários, arquivos e divisórias. Soluções para todos os ambientes corporativos, desde recepções até salas de reunião de alto padrão.",
     image: moveisImg,
     tags: ["Executivo", "Reuniões", "Recepção", "Open Space"],
+    pdf: moveisMadeiraPdf,
   },
   {
     id: "cadeiras",
@@ -43,6 +55,18 @@ const categories = [
   },
 ];
 
+function cardLinkProps(cat: Category) {
+  if (cat.pdf) {
+    return {
+      href: cat.pdf,
+      target: "_blank" as const,
+      rel: "noopener noreferrer",
+      "aria-label": `Abrir catálogo: ${cat.title} (PDF, nova aba)`,
+    };
+  }
+  return { href: "#contato", "aria-label": `Solicitar orçamento: ${cat.title}` };
+}
+
 export function Especialidades() {
   const [featured, ...others] = categories;
 
@@ -70,18 +94,21 @@ export function Especialidades() {
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[repeat(3,200px)] gap-[3px]">
 
           {/* ── FEATURED CARD: photo top, solid bordeaux panel bottom ── */}
-          <div className="flex flex-col overflow-hidden lg:row-span-3">
+          <a
+            {...cardLinkProps(featured)}
+            className="group flex flex-col overflow-hidden lg:row-span-3 no-underline cursor-pointer"
+          >
             {/* Photo — fills remaining height on lg+, fixed aspect on mobile */}
             <div className="flex-1 overflow-hidden min-h-0 aspect-[16/10] lg:aspect-auto">
               <img
                 src={featured.image}
                 alt={featured.title}
-                className="w-full h-full object-cover object-center block photo-graded"
+                className="w-full h-full object-cover object-center block photo-graded transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
 
             {/* Solid bordeaux text panel */}
-            <div className="bg-anchor px-8 py-7 lg:px-9 lg:py-8 shrink-0">
+            <div className="bg-anchor px-8 py-7 lg:px-9 lg:py-8 shrink-0 transition-colors duration-200 group-hover:bg-brand-hover">
               <span className="block text-on-brand-soft text-[11px] font-bold tracking-[0.2em] uppercase mb-3.5">
                 {featured.label} — Destaque
               </span>
@@ -105,20 +132,22 @@ export function Especialidades() {
                 {featured.description}
               </p>
 
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-1.5 text-on-brand text-[13px] font-bold tracking-[0.08em] uppercase no-underline"
-              >
-                Solicitar Orçamento <ArrowRight size={13} />
-              </a>
+              <span className="inline-flex items-center gap-1.5 text-on-brand text-[13px] font-bold tracking-[0.08em] uppercase">
+                {featured.pdf ? (
+                  <>Ver Catálogo <ArrowUpRight size={13} /></>
+                ) : (
+                  <>Solicitar Orçamento <ArrowRight size={13} /></>
+                )}
+              </span>
             </div>
-          </div>
+          </a>
 
           {/* ── 3 SECONDARY CARDS: text on top + photo bottom (mobile) / text left + photo right (sm+) ── */}
           {others.map((cat) => (
-            <div
+            <a
               key={cat.id}
-              className="bg-elevated border-[0.5px] border-line flex flex-col sm:flex-row sm:items-stretch overflow-hidden"
+              {...cardLinkProps(cat)}
+              className="group bg-elevated border-[0.5px] border-line flex flex-col sm:flex-row sm:items-stretch overflow-hidden no-underline cursor-pointer transition-colors duration-200 hover:border-brand"
             >
               {/* Text area */}
               <div className="flex-1 p-7 sm:px-8 sm:py-7 flex flex-col justify-center gap-2">
@@ -131,12 +160,13 @@ export function Especialidades() {
                 <p className="text-ink text-[13px] leading-[1.65] opacity-65 m-0">
                   {cat.description}
                 </p>
-                <a
-                  href="#contato"
-                  className="inline-flex items-center gap-1.5 text-brand text-xs font-bold tracking-[0.08em] uppercase no-underline mt-1"
-                >
-                  Ver mais <ArrowRight size={12} />
-                </a>
+                <span className="inline-flex items-center gap-1.5 text-brand text-xs font-bold tracking-[0.08em] uppercase mt-1">
+                  {cat.pdf ? (
+                    <>Ver Catálogo <ArrowUpRight size={12} /></>
+                  ) : (
+                    <>Ver mais <ArrowRight size={12} /></>
+                  )}
+                </span>
               </div>
 
               {/* Photo thumbnail */}
@@ -144,10 +174,10 @@ export function Especialidades() {
                 <img
                   src={cat.image}
                   alt={cat.title}
-                  className="w-full h-full object-cover object-center block photo-graded"
+                  className="w-full h-full object-cover object-center block photo-graded transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
