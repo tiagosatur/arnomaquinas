@@ -1,79 +1,68 @@
 import { Instagram, Linkedin, Facebook, ArrowUp } from "lucide-react";
 
+const navLinks = [
+  { label: "Sobre Nós", href: "#sobre" },
+  { label: "Produtos", href: "#produtos" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Assistência Técnica", href: "#servicos" },
+  { label: "Contato", href: "#contato" },
+];
+
+const produtos = [
+  "Móveis de Escritório",
+  "Cadeiras e Poltronas",
+  "Calculadoras",
+  "Relógios de Ponto",
+  "Destruidoras de Papel",
+  "Material de Expediente",
+];
+
+const socials = [
+  { Icon: Instagram, href: "https://www.instagram.com/arnomaquinas/", label: "Instagram" },
+  { Icon: Linkedin, href: "#", label: "LinkedIn" },
+  { Icon: Facebook, href: "#", label: "Facebook" },
+];
+
+const linkClass =
+  "text-on-brand-soft text-sm no-underline transition-colors hover:text-on-brand";
+
+const headingClass =
+  "text-on-brand text-[11px] font-bold tracking-[0.18em] uppercase mb-5";
+
 export function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer style={{ backgroundColor: "var(--surface-anchor)", borderTop: "1px solid var(--border-on-brand-subtle)" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "64px 48px 40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
-          {/* Brand */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  backgroundColor: "var(--text-on-brand)",
-                  borderRadius: 6,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <span style={{ color: "var(--brand-primary)", fontSize: 18, fontWeight: 800, fontFamily: "Manrope, sans-serif" }}>A</span>
+    <footer className="bg-anchor border-t border-line-on-brand-soft">
+      <div className="container-page pt-16 pb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-y-10 gap-x-8 lg:gap-12 mb-14">
+          {/* Brand — spans full width on mobile */}
+          <div className="col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 bg-on-brand rounded-md flex items-center justify-center">
+                <span className="text-brand text-lg font-extrabold">A</span>
               </div>
               <div>
-                <p style={{ color: "var(--text-on-brand)", fontSize: 16, fontWeight: 700, fontFamily: "Manrope, sans-serif", letterSpacing: "0.04em" }}>
+                <p className="text-on-brand text-base font-bold tracking-[0.04em] m-0">
                   ARNOMÁQUINAS
                 </p>
-                <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "Manrope, sans-serif" }}>
+                <p className="text-on-brand-soft text-[10px] font-semibold tracking-[0.2em] uppercase m-0">
                   Desde 1975
                 </p>
               </div>
             </div>
-            <p
-              style={{
-                color: "var(--text-on-brand-secondary)",
-                fontSize: 14,
-                lineHeight: 1.8,
-                fontFamily: "Manrope, sans-serif",
-                maxWidth: 280,
-              }}
-            >
+            <p className="text-on-brand-soft text-sm leading-[1.8] max-w-[280px] m-0">
               50 anos transformando ambientes corporativos com móveis, equipamentos e soluções completas para escritório.
             </p>
-            <div style={{ display: "flex", gap: 8, marginTop: 24 }}>
-              {[
-                { Icon: Instagram, href: "https://www.instagram.com/arnomaquinas/", label: "Instagram" },
-                { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                { Icon: Facebook, href: "#", label: "Facebook" },
-              ].map(({ Icon, href, label }) => (
+            <div className="flex gap-2 mt-6">
+              {socials.map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target={href === "#" ? undefined : "_blank"}
                   rel={href === "#" ? undefined : "noopener noreferrer"}
                   aria-label={label}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    border: "1px solid var(--border-on-brand-subtle)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--text-on-brand-secondary)",
-                    textDecoration: "none",
-                    transition: "border-color 0.2s, color 0.2s",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = "var(--text-on-brand-secondary)";
-                    e.currentTarget.style.color = "var(--text-on-brand)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = "var(--border-on-brand-subtle)";
-                    e.currentTarget.style.color = "var(--text-on-brand-secondary)";
-                  }}
+                  className="w-9 h-9 border border-line-on-brand-soft flex items-center justify-center text-on-brand-soft no-underline transition-colors hover:border-on-brand-soft hover:text-on-brand"
                 >
                   <Icon size={14} />
                 </a>
@@ -83,42 +72,11 @@ export function Footer() {
 
           {/* Navegação */}
           <div>
-            <h5
-              style={{
-                color: "var(--text-on-brand)",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-                marginBottom: 20,
-              }}
-            >
-              Navegação
-            </h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-              {[
-                { label: "Sobre Nós", href: "#sobre" },
-                { label: "Produtos", href: "#produtos" },
-                { label: "Serviços", href: "#servicos" },
-                { label: "Assistência Técnica", href: "#servicos" },
-                { label: "Contato", href: "#contato" },
-              ].map((link) => (
+            <h5 className={headingClass}>Navegação</h5>
+            <ul className="list-none p-0 m-0 flex flex-col gap-3">
+              {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    style={{
-                      color: "var(--text-on-brand-secondary)",
-                      fontSize: 14,
-                      fontFamily: "Manrope, sans-serif",
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
-                  >
-                    {link.label}
-                  </a>
+                  <a href={link.href} className={linkClass}>{link.label}</a>
                 </li>
               ))}
             </ul>
@@ -126,43 +84,11 @@ export function Footer() {
 
           {/* Produtos */}
           <div>
-            <h5
-              style={{
-                color: "var(--text-on-brand)",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-                marginBottom: 20,
-              }}
-            >
-              Produtos
-            </h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-              {[
-                "Móveis de Escritório",
-                "Cadeiras e Poltronas",
-                "Calculadoras",
-                "Relógios de Ponto",
-                "Destruidoras de Papel",
-                "Material de Expediente",
-              ].map((item) => (
+            <h5 className={headingClass}>Produtos</h5>
+            <ul className="list-none p-0 m-0 flex flex-col gap-3">
+              {produtos.map((item) => (
                 <li key={item}>
-                  <a
-                    href="#produtos"
-                    style={{
-                      color: "var(--text-on-brand-secondary)",
-                      fontSize: 14,
-                      fontFamily: "Manrope, sans-serif",
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "var(--text-on-brand)")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "var(--text-on-brand-secondary)")}
-                  >
-                    {item}
-                  </a>
+                  <a href="#produtos" className={linkClass}>{item}</a>
                 </li>
               ))}
             </ul>
@@ -170,27 +96,11 @@ export function Footer() {
 
           {/* Contato rápido */}
           <div>
-            <h5
-              style={{
-                color: "var(--text-on-brand)",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                fontFamily: "Manrope, sans-serif",
-                marginBottom: 20,
-              }}
-            >
-              Contato
-            </h5>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
-                (55) 98454-9195
-              </p>
-              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
-                contato@arnomaquinas.com.br
-              </p>
-              <p style={{ color: "var(--text-on-brand-secondary)", fontSize: 14, fontFamily: "Manrope, sans-serif", lineHeight: 1.6 }}>
+            <h5 className={headingClass}>Contato</h5>
+            <div className="flex flex-col gap-4">
+              <p className="text-on-brand-soft text-sm leading-[1.6] m-0">(55) 98454-9195</p>
+              <p className="text-on-brand-soft text-sm leading-[1.6] m-0">contato@arnomaquinas.com.br</p>
+              <p className="text-on-brand-soft text-sm leading-[1.6] m-0">
                 Seg–Sex: 8h às 18h<br />Sáb: 8h às 13h
               </p>
             </div>
@@ -198,41 +108,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div
-          style={{
-            borderTop: "1px solid var(--border-on-brand-subtle)",
-            paddingTop: 28,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <p style={{ color: "var(--text-on-brand-tertiary)", fontSize: 13, fontFamily: "Manrope, sans-serif" }}>
+        <div className="border-t border-line-on-brand-soft pt-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-on-brand-faint text-[13px] m-0">
             © {new Date().getFullYear()} Arnomáquinas. Todos os direitos reservados.
           </p>
           <button
             onClick={scrollTop}
-            style={{
-              width: 36,
-              height: 36,
-              border: "1px solid var(--border-on-brand-subtle)",
-              backgroundColor: "transparent",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "var(--text-on-brand-secondary)",
-              cursor: "pointer",
-              transition: "border-color 0.2s, color 0.2s",
-            }}
             aria-label="Voltar ao topo"
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = "var(--text-on-brand-secondary)";
-              e.currentTarget.style.color = "var(--text-on-brand)";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = "var(--border-on-brand-subtle)";
-              e.currentTarget.style.color = "var(--text-on-brand-secondary)";
-            }}
+            className="w-9 h-9 border border-line-on-brand-soft bg-transparent flex items-center justify-center text-on-brand-soft cursor-pointer transition-colors hover:border-on-brand-soft hover:text-on-brand self-end sm:self-auto"
           >
             <ArrowUp size={14} />
           </button>
