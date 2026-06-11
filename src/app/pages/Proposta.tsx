@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Bot,
@@ -194,6 +194,10 @@ const additionalServices = [
    PAGE
    ──────────────────────────────────────────────────────────── */
 export default function Proposta() {
+  useEffect(() => {
+    document.title = `Proposta · ${CONFIG.recipientCompany}`;
+  }, []);
+
   return (
     <div className="bg-surface min-h-screen" style={{ fontFamily: "Manrope, 'Segoe UI', system-ui, sans-serif" }}>
       {/* ━━━━━━━━━━━━━━ 1. HERO ━━━━━━━━━━━━━━ */}
