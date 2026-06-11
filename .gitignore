@@ -27,3 +27,7 @@ lerna-debug.log*
 
 # Claude Code workspace (local only)
 .claude/
+.vercel
+
+# Internal sales strategy doc — NÃO subir, repo é público
+PROPOSTA-COMERCIAL.md

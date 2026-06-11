@@ -50,3 +50,20 @@
 @utility photo-graded {
   filter: saturate(0.82) sepia(0.07) contrast(1.03);
 }
+
+/* Hero da Proposta — fade in suave do bg ao carregar a página. */
+@keyframes proposta-hero-bg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
+}
+
+/* Hero da Proposta — entrada escalonada dos elementos de texto. */
+@keyframes proposta-hero-rise-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: proposta-hero-rise-in 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
