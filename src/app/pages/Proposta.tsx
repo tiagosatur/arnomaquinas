@@ -25,6 +25,7 @@ const CONFIG = {
   recipientCompany: "Arnomáquinas",
   proposalDate: "11 de junho de 2026",
   proposalValidUntil: "26 de junho de 2026", // 15 dias
+  proposalValidUntilISO: "2026-06-26T23:59:59-03:00",
   myName: "Tiago Satur",
   myCompany: "Nasus Digital",
   myWhatsApp: "5541991696767", // ⚠️ trocar pelo seu número (com DDI 55)
@@ -37,6 +38,37 @@ const CONFIG = {
    ──────────────────────────────────────────────────────────── */
 const waUrl = (msg: string) =>
   `https://wa.me/${CONFIG.myWhatsApp}?text=${encodeURIComponent(msg)}`;
+
+/* ────────────────────────────────────────────────────────────
+   Countdown — discreto, ao lado da data de validade
+   ──────────────────────────────────────────────────────────── */
+function Countdown({ targetISO }: { targetISO: string }) {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const diff = new Date(targetISO).getTime() - now;
+
+  if (diff <= 0) {
+    return <span>· <strong className="text-ink font-bold">expirada</strong></span>;
+  }
+
+  const days = Math.floor(diff / 86_400_000);
+  const hours = Math.floor((diff / 3_600_000) % 24);
+  const minutes = Math.floor((diff / 60_000) % 60);
+  const seconds = Math.floor((diff / 1_000) % 60);
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  const label = `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+
+  return (
+    <span style={{ fontVariantNumeric: "tabular-nums" }} aria-label={`${label} restantes até o fim da validade`}>
+      · <strong className="text-ink font-bold">{label}</strong>
+    </span>
+  );
+}
 
 /* ────────────────────────────────────────────────────────────
    Section primitives
@@ -258,6 +290,7 @@ export default function Proposta() {
             <div className="flex items-center gap-2">
               <Clock size={14} />
               <span>Válida até <strong className="text-ink font-bold">{CONFIG.proposalValidUntil}</strong></span>
+              <Countdown targetISO={CONFIG.proposalValidUntilISO} />
             </div>
           </div>
 
